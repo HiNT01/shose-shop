@@ -439,6 +439,226 @@
       "nsx" : "gucci",
       "count" :"10",
       "type" : 0
+    },
+    {
+      "id": 41,
+      "productName": "Nước hoa Bvlgari Aqva Marine ",
+      "productCost": "2000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/perfume/pe1.png",
+      "productImgHover": "./assets/img/product/perfume/pe1-h.png",
+      "nsx" : "perfume",
+      "count" :"20",
+      "type" : 0
+    },
+    {
+      "id": 42,
+      "productName": "Nước hoa Bvlgari BLV For Men ",
+      "productCost": "1000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/perfume/pe2.png",
+      "productImgHover": "./assets/img/product/perfume/pe2-h.png",
+      "nsx" : "perfume",
+      "count" :"20",
+      "type" : 0
+    },
+    {
+      "id": 43,
+      "productName": " Nước hoa Calvin Klein Defy For Men EDT ",
+      "productCost": "1500000",
+      "productSale": "",
+      "productImg": "./assets/img/product/perfume/pe3.png",
+      "productImgHover": "./assets/img/product/perfume/pe3-h.png",
+      "nsx" : "perfume",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 44,
+      "productName": " Nước hoa Calvin Klein Eternity for men Aqua ",
+      "productCost": "3000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/perfume/pe4.png",
+      "productImgHover": "./assets/img/product/perfume/pe4-h.png",
+      "nsx" : "perfume",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 45,
+      "productName": "Nước hoa Calvin Klein Beauty for women",
+      "productCost": "1900000",
+      "productSale": "",
+      "productImg": "./assets/img/product/perfume/pe5.png",
+      "productImgHover": "./assets/img/product/perfume/pe5-h.png",
+      "nsx" : "perfume",
+      "count" :"15",
+      "type" : 0
+    },
+    {
+      "id": 46,
+      "productName": " Nước hoa Calvin Klein Ck One (Unisex)",
+      "productCost": "2400000",
+      "productSale": "",
+      "productImg": "./assets/img/product/perfume/pe6.png",
+      "productImgHover": "./assets/img/product/perfume/pe6-h.png",
+      "nsx" : "perfume",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 47,
+      "productName": "  Nước hoa Calvin Klein Downtown For Women ",
+      "productCost": "2200000",
+      "productSale": "",
+      "productImg": "./assets/img/product/perfume/pe7.png",
+      "productImgHover": "./assets/img/product/perfume/pe7-h.png",
+      "nsx" : "perfume",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 48,
+      "productName": " Nước hoa Calvin Klein Endless Euphoria For Women  ",
+      "productCost": "3100000",
+      "productSale": "",
+      "productImg": "./assets/img/product/perfume/pe8.png",
+      "productImgHover": "./assets/img/product/perfume/pe8-h.png",
+      "nsx" : "perfume",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 49,
+      "productName": "  Nước hoa Calvin Klein Eternity EDT For Men ",
+      "productCost": "2200000",
+      "productSale": "",
+      "productImg": "./assets/img/product/perfume/pe9.png",
+      "productImgHover": "./assets/img/product/perfume/pe9-h.png",
+      "nsx" : "perfume",
+      "count" :"10",
+      "type" : 0
+    }
+    ,{
+      "id": 50,
+      "productName": "Nước Hoa Calvin Klein Eternity Flame For Men ",
+      "productCost": "1600000",
+      "productSale": "",
+      "productImg": "./assets/img/product/perfume/pe10.png",
+      "productImgHover": "./assets/img/product/perfume/pe10-h.png",
+      "nsx" : "perfume",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 51,
+      "productName": " Bộ set 2 món quà tặng người yêu gồm hoa tai & dây chuyền (kèm mặt dây chuyền) Pandora Timeless đính đá CZ ",
+      "productCost": "3400000",
+      "productSale": "",
+      "productImg": "./assets/img/product/jewelry/je1.jpeg",
+      "productImgHover": "./assets/img/product/jewelry/je1-h.jpg",
+      "nsx" : "jewelry",
+      "count" :"20",
+      "type" : 0
+    },
+    {
+      "id": 52,
+      "productName": " Bộ vệ sinh trang sức dành riêng cho các sản phẩm Pandora ",
+      "productCost": "490000",
+      "productSale": "",
+      "productImg": "./assets/img/product/jewelry/je2.png",
+      "productImgHover": "./assets/img/product/jewelry/je2-h.png",
+      "nsx" : "jewelry",
+      "count" :"20",
+      "type" : 0
+    },
+    {
+      "id": 53,
+      "productName": " Charm bạc Disney chú cá Dory phim hoạt hình Pixar (new) ",
+      "productCost": "1990000",
+      "productSale": "",
+      "productImg": "./assets/img/product/jewelry/je3.png",
+      "productImgHover": "./assets/img/product/jewelry/je3-h.png",
+      "nsx" : "jewelry",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 54,
+      "productName": "Charm bạc Disney hoạt hình robot Wall-E của Pixar (new)  ",
+      "productCost": "1650000",
+      "productSale": "",
+      "productImg": "./assets/img/product/jewelry/je4.png",
+      "productImgHover": "./assets/img/product/jewelry/je4-h.png",
+      "nsx" : "jewelry",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 55,
+      "productName": " Charm bạc Disney nhân vật Edna của hoạt hình Pixar (new)",
+      "productCost": "1650000",
+      "productSale": "",
+      "productImg": "./assets/img/product/jewelry/je5.png",
+      "productImgHover": "./assets/img/product/jewelry/je5-h.png",
+      "nsx" : "jewelry",
+      "count" :"15",
+      "type" : 0
+    },
+    {
+      "id": 56,
+      "productName": "  Charm bạc mạ vàng hồng 14k hình Pandora Moments chiếc lá đính đá Cubic Zirconia nhiều màu  ",
+      "productCost": "1770000",
+      "productSale": "",
+      "productImg": "./assets/img/product/jewelry/je6.jpg",
+      "productImgHover": "./assets/img/product/jewelry/je6.jpg",
+      "nsx" : "jewelry",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 57,
+      "productName": "  Charm bạc Pandora Harry Potter gia tinh Dobby - Harry Potter  ",
+      "productCost": "954000",
+      "productSale": "",
+      "productImg": "./assets/img/product/jewelry/je7.jpg",
+      "productImgHover": "./assets/img/product/jewelry/je7.jpg",
+      "nsx" : "jewelry",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 58,
+      "productName": " Charm bạc Pandora Moment hình ly trà sữa (new) ",
+      "productCost": "1990000",
+      "productSale": "",
+      "productImg": "./assets/img/product/jewelry/je8.png",
+      "productImgHover": "./assets/img/product/jewelry/je8-h.png",
+      "nsx" : "jewelry",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 59,
+      "productName": " Charm bạc Pandora Moments đôi hình trái tim dì và cháu ",
+      "productCost": "1194000",
+      "productSale": "",
+      "productImg": "./assets/img/product/jewelry/je9.png",
+      "productImgHover": "./assets/img/product/jewelry/je9-h.png",
+      "nsx" : "jewelry",
+      "count" :"10",
+      "type" : 0
+    }
+    ,{
+      "id": 60,
+      "productName": "  Charm bạc Pandora Moments hình hoa cúc đính đá Cubic Zirconia pha lê xanh lá  ",
+      "productCost": "2350000",
+      "productSale": "",
+      "productImg": "./assets/img/product/jewelry/je10.jpg",
+      "productImgHover": "./assets/img/product/jewelry/je10.jpg",
+      "nsx" : "jewelry",
+      "count" :"10",
+      "type" : 0
     }
 
     

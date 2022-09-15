@@ -48,23 +48,25 @@
     color:#fff;
 }
 #btn__next--hover,
-#btn__productNext--hover {
+#btn__productNext--hover,
+#btn__jewelrytNext--hover,
+#btn__perfumeNext--hover {
     height: 0px;
     right: 10px;
     overflow: hidden;
     z-index: -1;
 }
 #btn__prev--hover,
-#btn__productPrev--hover {
+#btn__productPrev--hover,
+#btn__jewelrytPrev--hover,
+#btn__perfumePrev--hover {
     height: 0px;
     left: 10px;
     overflow: hidden;
     z-index: -1;
 }
-#btn__next--hover > i,
-#btn__prev--hover>i,
-#btn__productNext--hover > i,
-#btn__productPrev--hover > i {
+.product__btn--hover > i,
+.banner__btn--hover > i{
     color:#000;
 }
 .btn--hover {
@@ -73,11 +75,15 @@
     transition: all linear 0.5s;
 }
 #btn__next,
-#btn__productNext {
+#btn__productNext,
+#btn__jewelrytNext,
+#btn__perfumeNext {
     right: 10px;
 }
 #btn__prev,
-#btn__productPrev {
+#btn__productPrev,
+#btn__jewelrytPrev,
+#btn__perfumePrev {
     left: 10px;
 }
 .banner__dots,
@@ -398,4 +404,56 @@
     width: 20px;
     background-color: red;
     z-index: 10;
+}
+/* ------- */
+.accessory {
+    display: flex;
+    justify-content: space-between;
+}
+.accessory__item {
+    width: calc(50% - 10px);
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+.accessory__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.product__type--accessory {
+    position: relative;
+    padding: 10px;
+}
+.product__type--accessory::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 4px;
+    height: 100%;
+    border-radius: 8px;
+    background-color: #000;
+}
+.accessory__bottom {
+    display: flex;
+}
+.accessory__left {
+    width: 35%;
+}
+.accessory__left > img {
+    width: 100%;
+}
+.accessory__right {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+.product__item--accessory {
+    height: 90%;
+    padding: 0px 20px;
+}
+.product__item--2 {
+    width: calc(50% - 10px);
 }

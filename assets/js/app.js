@@ -198,6 +198,21 @@ let btnProductPrevHover = document.querySelector("#btn__productPrev");
 let btnProductPrev = document.querySelector("#btn__productPrev--hover");
 btnHover(btnProductNextHover,btnProductNext)
 btnHover(btnProductPrevHover,btnProductPrev)
+//---hover btn product acessery
+let btnJewelrytNext = document.querySelector("#btn__jewelrytNext");
+let btnJewelrytNextHover = document.querySelector("#btn__jewelrytNext--hover");
+let btnJewelrytPrev = document.querySelector("#btn__jewelrytPrev");
+let btnJewelrytPrevHover = document.querySelector("#btn__jewelrytPrev--hover");
+btnHover(btnJewelrytNext,btnJewelrytNextHover)
+btnHover(btnJewelrytPrev,btnJewelrytPrevHover)
+//
+let btnPerfumeNext = document.querySelector("#btn__perfumeNext");
+let btnPerfumeNextHover = document.querySelector("#btn__perfumeNext--hover");
+let btnPerfumePrev = document.querySelector("#btn__perfumePrev");
+let btnPerfumePrevHover = document.querySelector("#btn__perfumePrev--hover");
+btnHover(btnPerfumeNext,btnPerfumeNextHover)
+btnHover(btnPerfumePrev,btnPerfumePrevHover)
+
 
 
  

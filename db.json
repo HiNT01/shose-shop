@@ -1,0 +1,494 @@
+{
+  "product": [
+    {
+      "id": 1,
+      "productName": "Giày Nike Jordan 1 Retro High OG SP 'Utility Stash' DN4336-001 ",
+      "productCost": "8900000",
+      "productSale": "7929900",
+      "productImg": "./assets/img/product/shoes/sh1.png",
+      "productImgHover": "./assets/img/product/shoes/sh1-h.png",
+      "nsx" : "nike",
+      "count" :"20",
+      "type" : 1
+    },
+    {
+      "id": 2,
+      "productName": " Giày Nike Air Jordan 1 Mid GS 'White Shadow' 554725-073 ",
+      "productCost": "8500000",
+      "productSale": "7573500",
+      "productImg": "./assets/img/product/shoes/sh2.png",
+      "productImgHover": "./assets/img/product/shoes/sh2-h.png",
+      "nsx" : "nike",
+      "count" :"20",
+      "type" : 1
+    },
+    {
+      "id": 3,
+      "productName": " Giày Nike Jordan 1 Retro Golf 'Starfish' DD9315-800 ",
+      "productCost": "6900000",
+      "productSale": "6147900",
+      "productImg": "./assets/img/product/shoes/sh3.png",
+      "productImgHover": "./assets/img/product/shoes/sh3-h.png",
+      "nsx" : "nike",
+      "count" :"20",
+      "type" : 1
+    },
+    {
+      "id": 4,
+      "productName": " Giày Nike Jordan 1 High OG 'Denim' DM9036-104 ",
+      "productCost": "6900000",
+      "productSale": "6147900",
+      "productImg": "./assets/img/product/shoes/sh4.png",
+      "productImgHover": "./assets/img/product/shoes/sh4-h.png",
+      "nsx" : "nike",
+      "count" :"20",
+      "type" : 1
+    },
+    {
+      "id": 5,
+      "productName": " Giày Nike Air Jordan 1 Retro High OG 'Volt' 555088-702 ",
+      "productCost": "6900000",
+      "productSale": "6147900",
+      "productImg": "./assets/img/product/shoes/sh5.png",
+      "productImgHover": "./assets/img/product/shoes/sh5-h.png",
+      "nsx" : "nike",
+      "count" :"20",
+      "type" : 1
+    },
+    {
+      "id": 6,
+      "productName": " Giày Nike Jordan 1 Mid 'Light Smoke Grey' 554725-078 ",
+      "productCost": "6200000",
+      "productSale": "5524200",
+      "productImg": "./assets/img/product/shoes/sh6.png",
+      "productImgHover": "./assets/img/product/shoes/sh6-h.png",
+      "nsx" : "nike",
+      "count" :"20",
+      "type" : 1
+    },
+    {
+      "id": 7,
+      "productName": " Giày Nike Wmns Air Jordan 1 Mid 'Shadow' BQ6472-007 ",
+      "productCost": "5900000",
+      "productSale": "5256900",
+      "productImg": "./assets/img/product/shoes/sh7.png",
+      "productImgHover": "./assets/img/product/shoes/sh7-h.png",
+      "nsx" : "nike",
+      "count" :"20",
+      "type" : 1
+    },
+    {
+      "id": 8,
+      "productName": " Giày Nike Wmns Air Jordan 1 Mid 'Particle Grey' DO7139-002 ",
+      "productCost": "5900000",
+      "productSale": "5256900",
+      "productImg": "./assets/img/product/shoes/sh8.png",
+      "productImgHover": "./assets/img/product/shoes/sh8-h.png",
+      "nsx" : "nike",
+      "count" :"20",
+      "type" : 1
+    },
+    {
+      "id": 9,
+      "productName": " Giày Nike Wmns Air Jordan 1 Low 'Siren Red' DC0774-060 ",
+      "productCost": "5900000",
+      "productSale": "5256900",
+      "productImg": "./assets/img/product/shoes/sh9.png",
+      "productImgHover": "./assets/img/product/shoes/sh9-h.png",
+      "nsx" : "nike",
+      "count" :"20",
+      "type" : 1
+    },
+    {
+      "id": 10,
+      "productName": " Giày Nike Wmns Air Jordan 1 Low 'Red Blue' DC0774-604 ",
+      "productCost": "5900000",
+      "productSale": "5256900",
+      "productImg": "./assets/img/product/shoes/sh10.png",
+      "productImgHover": "./assets/img/product/shoes/sh10-h.png",
+      "nsx" : "nike",
+      "count" :"20",
+      "type" : 1
+    },
+    {
+      "id": 26,
+      "productName": "Giày Nike Air Max 2090 'Volt Blue' BV9977-101",
+      "productCost": "490000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh26.png",
+      "productImgHover": "./assets/img/product/shoes/sh26-h.png",
+      "nsx" : "nike",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 27,
+      "productName": " Giày Nike Air Max 2090 'Black Ice Blue Starfish Orange' DM0971-107 ",
+      "productCost": "550000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh27.png",
+      "productImgHover": "./assets/img/product/shoes/sh27-h.png",
+      "nsx" : "nike",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 28,
+      "productName": "  Giày Nike Air Max 2090 'Triple White' CJ4066-102 ",
+      "productCost": "350000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh28.png",
+      "productImgHover": "./assets/img/product/shoes/sh28-h.png",
+      "nsx" : "nike",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 29,
+      "productName": " Giày Nike Air Max 2090 'University Red' DC9180-106 ",
+      "productCost": "350000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh29.png",
+      "productImgHover": "./assets/img/product/shoes/sh29-h.png",
+      "nsx" : "nike",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 30,
+      "productName": "  Giày Nike Air Max 2090 'Pure Platium Volt' CT1803-001  ",
+      "productCost": "350000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh30.png",
+      "productImgHover": "./assets/img/product/shoes/sh30-h.png",
+      "nsx" : "nike",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 11,
+      "productName": " Giày Adidas Forum Exhibit Mid 'Cream Pink' H01922 ",
+      "productCost": "4500000",
+      "productSale": "3900000",
+      "productImg": "./assets/img/product/shoes/sh11.png",
+      "productImgHover": "./assets/img/product/shoes/sh11-h.jpg",
+      "nsx" : "adidas",
+      "count" :"19",
+      "type" : 1
+    },
+    {
+      "id": 12,
+      "productName": "  Giày Adidas Forum Exhibit Mid 'Green White' H01921 ",
+      "productCost": "390000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh12.png",
+      "productImgHover": "./assets/img/product/shoes/sh12-h.jpg",
+      "nsx" : "adidas",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 13,
+      "productName": "  Giày Adidas Forum Exhibit Mid 'White Halo Mint' GZ5388 ",
+      "productCost": "390000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh13.png",
+      "productImgHover": "./assets/img/product/shoes/sh13-h.jpg",
+      "nsx" : "adidas",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 14,
+      "productName": " Giày Adidas Forum Exhibit Mid GW8921",
+      "productCost": "590000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh14.png",
+      "productImgHover": "./assets/img/product/shoes/sh14-h.jpg",
+      "nsx" : "adidas",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 15,
+      "productName": " Giày Adidas Forum High 'Xiangi' H04236",
+      "productCost": "2900000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh15.png",
+      "productImgHover": "./assets/img/product/shoes/sh15-h.png",
+      "nsx" : "adidas",
+      "count" :"20",
+      "type" : 0
+    },
+    {
+      "id": 16,
+      "productName": " Giày Adidas Forum Low “Linen” GX3659 ",
+      "productCost": "390000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh16.png",
+      "productImgHover": "./assets/img/product/shoes/sh16-h.jpg",
+      "nsx" : "adidas",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 17,
+      "productName": " Giày Adidas Forum Low 'Black White' GW0695 ",
+      "productCost": "450000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh17.png",
+      "productImgHover": "./assets/img/product/shoes/sh17-h.png",
+      "nsx" : "adidas",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 18,
+      "productName": " Giày Adidas Forum Low 'Brown' GW6230 ",
+      "productCost": "390000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh18.png",
+      "productImgHover": "./assets/img/product/shoes/sh18-h.png",
+      "nsx" : "adidas",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 19,
+      "productName": " Giày Adidas Forum Low 'Cloud White Red' H01674 ",
+      "productCost": "350000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh19.png",
+      "productImgHover": "./assets/img/product/shoes/sh19-h.jpg",
+      "nsx" : "adidas",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 20,
+      "productName": " Giày Adidas Forum Low 'Dark Witch' G55616 ",
+      "productCost": "450000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh20.png",
+      "productImgHover": "./assets/img/product/shoes/sh20-h.png",
+      "nsx" : "adidas",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 21,
+      "productName": " Giày Adidas Forum Low 'Xiangi' H04198 ",
+      "productCost": "590000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh21.png",
+      "productImgHover": "./assets/img/product/shoes/sh21-h.png",
+      "nsx" : "adidas",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 22,
+      "productName": "  Giày Adidas Forum Mid 'White Royal Blue' FY6796 ",
+      "productCost": "3500000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh22.png",
+      "productImgHover": "./assets/img/product/shoes/sh22-h.png",
+      "nsx" : "adidas",
+      "count" :"20",
+      "type" : 0
+    },
+    {
+      "id": 23,
+      "productName": "  Giày Adidas Forum Tech Boost 'Black Orbit Violet' Q46358a ",
+      "productCost": "450000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh23.png",
+      "productImgHover": "./assets/img/product/shoes/sh23-h.png",
+      "nsx" : "adidas",
+      "count" :"5",
+      "type" : 0
+    },
+    {
+      "id": 24,
+      "productName": "  Giày Adidas Ivy Park x Forum Mid 'Green Tint' FZ4387  ",
+      "productCost": "7900000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh24.png",
+      "productImgHover": "./assets/img/product/shoes/sh24-h.png",
+      "nsx" : "adidas",
+      "count" :"15",
+      "type" : 0
+    },
+    {
+      "id": 25,
+      "productName": "  Giày Adidas Neighborhood x Superstar 80s 'NBHD' B34070  ",
+      "productCost": "11000000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh25.png",
+      "productImgHover": "./assets/img/product/shoes/sh25-h.png",
+      "nsx" : "adidas",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 31,
+      "productName": " Giày Gucci Boot With Interlocking G Chain 644728-19Y00-7728 ",
+      "productCost": "400000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh31.png",
+      "productImgHover": "./assets/img/product/shoes/sh31-h.png",
+      "nsx" : "gucci",
+      "count" :"20",
+      "type" : 0
+    },
+    {
+      "id": 32,
+      "productName": " Giày Gucci GG Sneaker Blue Beige 669582-UPGB0-4273 ",
+      "productCost": "229000",
+      "productSale": "200000",
+      "productImg": "./assets/img/product/shoes/sh32.png",
+      "productImgHover": "./assets/img/product/shoes/sh32-h.png",
+      "nsx" : "gucci",
+      "count" :"20",
+      "type" : 1
+    },
+    {
+      "id": 33,
+      "productName": "  Giày Gucci Horsebit Loafer Black 673819-1WQ10-1067 ",
+      "productCost": "2400000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh33.png",
+      "productImgHover": "./assets/img/product/shoes/sh33-h.png",
+      "nsx" : "gucci",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 34,
+      "productName": " Giày Gucci Loafer with Horsebit Navy Blue 695049-UPG50-4890  ",
+      "productCost": "2200000",
+      "productSale": "2000000",
+      "productImg": "./assets/img/product/shoes/sh34.png",
+      "productImgHover": "./assets/img/product/shoes/sh34-h.png",
+      "nsx" : "gucci",
+      "count" :"10",
+      "type" : 1
+    },
+    {
+      "id": 35,
+      "productName": " Giày Gucci Men's Lace-up Shoe with Double G 624663-BNC00-1000  ",
+      "productCost": "990000",
+      "productSale": "900000",
+      "productImg": "./assets/img/product/shoes/sh35.png",
+      "productImgHover": "./assets/img/product/shoes/sh35-h.png",
+      "nsx" : "gucci",
+      "count" :"15",
+      "type" : 1
+    },
+    {
+      "id": 36,
+      "productName": " Giày Gucci Men's Shoe with Brogue Details 658215-1W600-6039 ",
+      "productCost": "550000",
+      "productSale": "500000",
+      "productImg": "./assets/img/product/shoes/sh36.png",
+      "productImgHover": "./assets/img/product/shoes/sh36-h.png",
+      "nsx" : "gucci",
+      "count" :"10",
+      "type" : 1
+    },
+    {
+      "id": 37,
+      "productName": "  Giày Gucci Off the Grid Gucci Tennis 1977 Green Red 675111-H9H70-3260 ",
+      "productCost": "400000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh37.png",
+      "productImgHover": "./assets/img/product/shoes/sh37-h.png",
+      "nsx" : "gucci",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 38,
+      "productName": "  Giày Gucci Rhyton Star Print Beige 692935-DRW00-9522  ",
+      "productCost": "660000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh38.png",
+      "productImgHover": "./assets/img/product/shoes/sh38-h.png",
+      "nsx" : "gucci",
+      "count" :"10",
+      "type" : 0
+    },
+    {
+      "id": 39,
+      "productName": "  Giày Gucci Tennis 1977 Sneaker Brown Red 692917-UKO70-2584  ",
+      "productCost": "1700000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh39.png",
+      "productImgHover": "./assets/img/product/shoes/sh39-h.png",
+      "nsx" : "gucci",
+      "count" :"10",
+      "type" : 0
+    }
+    ,{
+      "id": 40,
+      "productName": " Giày Gucci Tennis 1977 Sneaker White Red 694744-17L10-9060  ",
+      "productCost": "1400000",
+      "productSale": "",
+      "productImg": "./assets/img/product/shoes/sh40.png",
+      "productImgHover": "./assets/img/product/shoes/sh40-h.png",
+      "nsx" : "gucci",
+      "count" :"10",
+      "type" : 0
+    }
+
+    
+  ],
+  "evaluates": [
+    {
+      "evaluateId": 1,
+      "userId": 1,
+      "id": 1,
+      "point": 4
+    },
+    {
+      "evaluateId": 2,
+      "userId": 1,
+      "productId": 2,
+      "point": 2
+    },
+    {
+      "evaluateId": 3,
+      "userId": 1,
+      "productId": 3,
+      "point": 3
+    },
+    {
+      "evaluateId": 4,
+      "userId": 1,
+      "productId": 4,
+      "point": 4
+    },
+    {
+      "evaluateId": 5,
+      "userId": 1,
+      "productId": 5,
+      "point": 5
+    },
+    {
+      "evaluateId": 6,
+      "userId": 1,
+      "productId": 1,
+      "point": 5
+    }
+  ],
+  "sliderBanner": [
+    {
+      "img_id": 1,
+      "src": "./assets/img/slider1.webp"
+    },
+    {
+      "img_id": 2,
+      "src": "./assets/img/slider2.webp"
+    }
+  ]
+}

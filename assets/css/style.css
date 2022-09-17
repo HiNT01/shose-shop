@@ -122,9 +122,6 @@
 .product__title {
     display: flex;
 }
-.product--sale {
-    background: rgb(271,21,21);
-}
 .product__list {
     position: relative;
 }
@@ -296,7 +293,7 @@
     background-color: rgb(40,138,214);
     color:#fff;
     padding-right: 30px;
-    width: 150px;
+    width: 90%;
 }
 .product__btnAdds:hover .product__btnAdd {
     color: rgb(40,138,214);
@@ -388,22 +385,35 @@
     border-color: rgb(40,138,214);
 }
 /* banner bottom */
-.banner__bottom {
+.bannerBottom {
     position: relative;
-
+    overflow: hidden;
+}
+.bannerBottom__line {
+    position: absolute;
+    display: block;
+    width: 50px;
+    height:285%;
+    bottom: -94%;
+    left:-400px;
+    background-color: rgba(255,255,255,0.4);
+    z-index: 10;
+    transform: rotate(45deg);
+}
+.bannerBottom:hover .bannerBottom__line {
+    animation: linePlay linear 1 0.75s;
+}
+@keyframes linePlay {
+    to {
+        left: 150%;
+    }
+    
 }
 .bannerBottom > img {
+   
     width: 100%;
     border-radius: 4px;
-}
-.bannerBottom::before {
-    content: "1";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    background-color: red;
-    z-index: 10;
+    z-index: 9;
 }
 /* ------- */
 .accessory {
@@ -413,7 +423,7 @@
 .accessory__item {
     width: calc(50% - 10px);
     margin-top: 20px;
-    background-color: #fff;
+    background-color: rgba(255,255,255,0.5);
     border-radius: 4px;
 }
 .accessory__top {
@@ -456,4 +466,7 @@
 }
 .product__item--2 {
     width: calc(50% - 10px);
+}
+.product__item--2 .product__btnAddText {
+    font-size: 10px;
 }

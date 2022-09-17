@@ -5,6 +5,9 @@ html {
 .hidden {
    display: none !important;
 }
+.main {
+   position: relative;
+}
 /* color */
 .color--black {
    background-color: rgba(32,32,32,1)!important;
@@ -88,19 +91,36 @@ header {
 nav {
     display: block;
     background-color: #fff;
-    padding:10px 0px;
     box-shadow: 0 1px 5px 2px rgb(0 0 0 / 15%);
     -webkit-box-shadow: 0 1px 5px 2px rgb(0 0 0 / 15%);
     -moz-box-shadow:0 1px 5px 2px rgb(0 0 0 / 15%);
 }
+
  .header__nav {
     display: flex;
     max-width: 85%;
     margin:auto;
     list-style: none;
+    height: 100%;
+    position: relative;
+
  }
+ .header__navLine {
+   height:4px;
+   width:148px;
+   background:linear-gradient(to right ,#cb5eee,#4be1ec);
+   position: absolute;
+   top: 0;
+   left: 12px;
+   transition: all linear .2s;
+}
  .header__navitem {
-    width: calc(100%/7);
+    width: calc(100% / 7);
+    position: relative;
+    padding:10px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
  .header__link {
     display: block;
@@ -109,6 +129,25 @@ nav {
     text-transform:capitalize;
     font-weight:500;
     line-height:22px;
+ }
+ .header__parent-nav:hover .header__subNav {
+   display: block;
+ }
+ .header__subNav {
+   list-style: none;
+   position: absolute;
+   top: 100%;
+   left:0;
+   right: 0;
+   background-color: #fff;
+   padding: 0;
+   display: none;
+ }
+ .header__subnav-item {
+   padding: 5px;
+ }
+ .header__subnav-item:hover {
+   background-color: #dbdbdb;
  }
  /* footer */
  footer {
@@ -164,24 +203,29 @@ nav {
  .footer__btn i {
     margin-right:4px;
  }
- .footer__socials {
-    list-style:none;
-    display:flex;
-    justify-content: flex-end;
-    align-items:center;
+ .socials {
+   list-style:none;
+   display:flex;
+   /* justify-content: flex-end; */
+   align-items:center;
  }
- .footer__social {
+ .socials--horizontal {
+   flex-direction: row-reverse;
+ }
+ .social {
+   display: flex;
+    justify-content:center;
+    align-items:center;
+    overflow: hidden;
+ }
+ .social--horizontal {
     width: 30px;
     height:30px;
     border-radius:4px;
-    display: flex;
-    justify-content:center;
-    align-items:center;
     margin-left:5px;
  }
  .zalo {
     background-color: #008FE5;
-    
  }
  .zalo  img {
     width:30px;
@@ -200,9 +244,45 @@ nav {
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 }
 .facebook {
-    background-color: #008FE5;
+   background-color: #008FE5;
+   
 }
-.footer__link {
+.social.social__menu {
+    background-color: #008FE5;
+    width: 48px;
+   height:48px;
+}
+.social__icon--active {
+   display: none;
+}
+.social__icon--rotate {
+   display: block;
+   animation: iconRotate linear 1s 1;
+}
+.social.social--hidden {
+ animation: iconVisible linear 0.5s 1 forwards;
+}
+@keyframes iconVisible {
+   from {
+      width: 0;
+      height: 0;
+      opacity: 0;
+   }
+   to {
+      width: 40px;
+      height: 40px;
+      opacity: 1;
+   }
+}
+@keyframes iconRotate {
+   to {
+      transform: rotate(360deg)
+   }
+}
+.phone {
+   background-color: red;
+}
+.social__link {
     color:#fff;
     font-size: 20px;
 }
@@ -223,6 +303,7 @@ nav {
  .footer__link {
     text-decoration: none;
     text-transform: capitalize;
+    color: #fff;
  }
  /* footer bottom */
  .footer__bottom {
@@ -234,6 +315,143 @@ nav {
  .footer__bottom > span {
     color:#fff;
     max-width:70%;
+ }
+ /* back to top */
+ .btn-back {
+   position: fixed;
+   bottom: 5%;
+   right: -10%;
+   opacity: 0;
+   display: block;
+   z-index: 99;
+   padding: 5px 8px;
+   border: none;
+   background-color: #000;
+   color: #fff;
+   cursor: pointer;
+ }
+ .showBtnBack {
+  animation: showBtn linear 1s 1 forwards;
+ }
+ @keyframes showBtn {
+   to {
+      right: 3.5%;
+      opacity: 1;
+
+   }
+ }
+ /* list color */
+ .list-color {
+   position: fixed;
+   bottom: 70%;
+   right: 1%;
+   display: block;
+   z-index: 99;
+ }
+
+ .color__btnSetting {
+   background-color: #000;
+   border-radius: 4px;
+   padding: 5px;
+   cursor: pointer;
+ }
+ .color__btnSetting > i {
+   color: yellow;
+ }
+ .colors {
+   background-color: rgba(255,255,255,0.8);
+   list-style: none;
+   position: absolute;
+   top: 130%;
+   right: -200px;
+   width: 132px;
+   height: auto;
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   align-items: center;
+   margin: 0;
+   padding: 10px;
+   border-radius: 8px;
+ }
+ .colors--active {
+   animation: colorsIn linear 1s 1 forwards;
+ }
+ .colors--notActive {
+   animation: colorsOut linear 1s 1 forwards;
+ }
+ @keyframes colorsIn {
+   to {
+      right:0;
+   }
+ }
+ @keyframes colorsOut {
+   from {
+      right:0;
+   }
+   to {
+      right:-200px;
+   }
+   
+ }
+ .color {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 5px;
+ width: calc(25% - 5px);
+  height: 24px;
+  cursor: pointer;
+ }
+ .color__item {
+   width: 20px;
+   height: 20px;
+   border-radius: 4px;
+ }
+ #color--black > .color__item {
+   background-color: rgb(32,32,32);
+ }
+ #color--blue > .color__item {
+   background-color:rgb(52,96,245);
+ }
+ #color--brown > .color__item {
+   background-color: rgb(152,109,92);
+ }
+ #color--pink > .color__item {
+   background-color:rgb(216,32,176);
+ }
+ #color--green > .color__item {
+   background-color: rgb(48,151,133);
+ }
+ #color--red > .color__item {
+   background-color:rgb(170,28,28);
+ }
+ #color--violet > .color__item {
+   background-color: rgb(198,98,239);
+ }
+ #color--drakBlue > .color__item {
+   background-color:rgb(110,143,251);
+ }
+ /* contact */
+ .list-contact {
+   position: fixed;
+   bottom: 10%;
+   right: 3%;
+   display: block;
+   z-index: 99;
+ }
+ .footer__socials--vertical {
+   flex-direction: column;
+ }
+ .social--vertical {
+   margin-bottom: 5px;
+   border-radius:50%;
+   width: 0px;
+   height:0px;
+ }
+ .social--vertical .zalo {
+   width: 0px;
+   height: 0px;
  }
  /* scroll */
  /* width */

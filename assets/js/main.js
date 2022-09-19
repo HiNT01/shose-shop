@@ -16,6 +16,7 @@ let currentId = 0
 let limit = 5
 let  arrProductAll
 let currentIdAccessory
+let currentIdType = 0
 let btnColorBlack = $('#color--black')
 let btnColorDrakBlue = $('#color--drakBlue')
 let btnColorViolet = $('#color--violet')
@@ -25,6 +26,7 @@ let btnColorRed = $('#color--red')
 let btnColorPink = $('#color--pink')
 let btnColorGreen = $('#color--green')
 let boxDetailBtnClose = $('#box-detail__btn-close')
+
 // get api
 function getApi (api,callback) {
     fetch(api)
@@ -50,7 +52,7 @@ function renderAccessory(data,element,start) {
          let productItem = data[currentIdAccessory] 
          htmls += `  <div href="#" class="product__item product__item--2" data-product = ${productItem.id}>
          <div class="product__itemImg">
-         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btn-search-hidden">
+         <button type="button" class="btn btn-primary btn-search-hidden" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
          <i class="fa-solid fa-magnifying-glass "></i>
             </button>
              <img src=${productItem.productImg} alt="" id="img-visible">
@@ -105,24 +107,26 @@ function renderAccessory(data,element,start) {
 
 //render product sale
 function renderProductSale(data) {
-    if(currentId == data.length) {
+    if(currentId >= data.length) {
         currentId = 0
-    }else if (currentId < 0) {
+    }else if (currentId < -1) {
         currentId = data.length - limit
     }
     else {
         currentId
     }
+    
         let max = currentId + limit
         let htmls = ''
         for(currentId ; currentId < max ; currentId++) {
          let productItem = data[currentId] 
-         htmls += ` <div href="#" class="product__item" data-product = ${productItem.id} >
+         
+         htmls += ` <div href="#" class="product__item" data-product =${productItem.id}>
          <div class="product__itemImg">
              <span class="product__sale">
              11%
              </span>
-             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btn-search-hidden">
+             <button type="button" class="btn btn-primary btn-search-hidden" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
          <i class="fa-solid fa-magnifying-glass "></i>
             </button>
              <img src=${productItem.productImg} alt="" id="img-visible">
@@ -173,7 +177,6 @@ function renderProductSale(data) {
         listProductSale.innerHTML = htmls
         currentId--
         
-
 }
 function filterProductSale (data) {
     let arrProducts = data.filter(element => {
@@ -187,12 +190,12 @@ function filterProductType (data,type) {
     });
     return arrProducts
 }
-function renderProductType(data) {
-        currentId = 0
-        let max = currentId + 10
+function renderProductType(data) {  
+        currentIdType = 0
+        let max = currentIdType + 10
         let htmls = ''
-        for(currentId ; currentId < max ; currentId++) {
-         let productItem = data[currentId] 
+        for(currentIdType ; currentIdType < max ; currentIdType++) {
+         let productItem = data[currentIdType] 
          htmls += ` <div href="#" class="product__item" data-product = ${productItem.id} >
          <div class="product__itemImg">
          <button type="button" class="btn btn-primary btn-search-hidden" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
@@ -252,14 +255,17 @@ function handleEvents (data) {
   btnGucciType.onclick = function () {
     renderProductType(filterProductType(data, "gucci"));
     handleActiveType("gucci");
+    handleModel(data)
   };
   btnNikeType.onclick = function () {
     renderProductType(filterProductType(data, "nike"));
     handleActiveType("nike");
+    handleModel(data)
   };
   btnAdidasType.onclick = function () {
     renderProductType(filterProductType(data, "adidas"));
     handleActiveType("adidas");
+    handleModel(data)
   };
   //btn accessory
   // btn next jewelry
@@ -270,11 +276,13 @@ function handleEvents (data) {
       listJewelry,
       currentIdAccessory
     );
+    handleModel(data)
   };
   // btn prev jewelry
   $("#btn__jewelrytPrev--hover").onclick = function () {
     let start = currentIdAccessory - 3;
     renderAccessory(filterProductType(data, "jewelry"), listJewelry, start);
+    handleModel(data)
   };
   // btn next perfume
   $("#btn__perfumeNext--hover").onclick = function () {
@@ -284,11 +292,13 @@ function handleEvents (data) {
       listPerfume,
       currentIdAccessory
     );
+    handleModel(data)
   };
   // btn prev perfume
   $("#btn__perfumePrev--hover").onclick = function () {
     let start = currentIdAccessory - 3;
     renderAccessory(filterProductType(data, "perfume"), listPerfume, start);
+    handleModel(data)
   };
   //btn social
   $("#social__icon-menu").onclick = function () {
@@ -366,43 +376,45 @@ function handleEvents (data) {
       btnSettingColor.setAttribute("keyActive", "notActive");
     }
   };
-  //change color 
- 
-  btnColorBlack.onclick = function () { changeColor(btnColorBlack) }
-  btnColorViolet.onclick = function () { changeColor(btnColorViolet) }
-  btnColorDrakBlue.onclick = function () { changeColor(btnColorDrakBlue)}
-  btnColorRed.onclick = function () { changeColor(btnColorRed) }
-  btnColorPink.onclick = function () { changeColor(btnColorPink) }
-  btnColorGreen.onclick = function () { changeColor(btnColorGreen)}
-  btnColorBlue.onclick = function () { changeColor(btnColorBlue) }
-  btnColorBrown.onclick = function () { changeColor(btnColorBrown)}
-  // render detail product
-  let btnSearchHiddens = $$('.btn-search-hidden')
-  btnSearchHiddens.forEach(element => {
-    element.onclick = function () {
-      renderModal(data,element)
+  //   line nav
+let lineNav = $('.header__navLine')
+let navItems = $$('.header__navitem')
+let arrWidthNavItem = []
+let positionLeft = 0
+navItems.forEach((element,index) => {
+   arrWidthNavItem.push(element.clientWidth*index)
+   element.onmouseover = function () {
+    positionLeft = arrWidthNavItem[index] + 12
+    lineNav.setAttribute('style','left:'+ positionLeft + 'px')
     }
-  })
+})
 
-  
+  //change color 
+  handlChangeColor()
+  // render detail product
+  handleModel(data)
 }
-
-function disable() {
-  // To get the scroll position of current webpage
- let TopScroll = window.pageYOffset || document.documentElement.scrollTop
- let LeftScroll = window.pageXOffset || document.documentElement.scrollLeft
-  // if scroll happens, set it to the previous value
-  window.onscroll = function() {
-  window.scrollTo(LeftScroll, TopScroll);
-          };
+function handlChangeColor () {
+    btnColorBlack.onclick = function () { changeColor(btnColorBlack) }
+    btnColorViolet.onclick = function () { changeColor(btnColorViolet) }
+    btnColorDrakBlue.onclick = function () { changeColor(btnColorDrakBlue)}
+    btnColorRed.onclick = function () { changeColor(btnColorRed) }
+    btnColorPink.onclick = function () { changeColor(btnColorPink) }
+    btnColorGreen.onclick = function () { changeColor(btnColorGreen)}
+    btnColorBlue.onclick = function () { changeColor(btnColorBlue) }
+    btnColorBrown.onclick = function () { changeColor(btnColorBrown)}
 }
-function enable() {
-  window.onscroll = function() {};
+function handleModel(data) {
+    let btnSearchHiddens = $$('.btn-search-hidden')
+    btnSearchHiddens.forEach(element => {
+      element.onclick = function () {
+        renderModal(data,element)
+      }
+    })
 }
 function changeColor (colorName) {
     let bgColors = $$('.bg-color')
     let textColors = $$('.text-color')
-    let textColorAfters = $$('.text-color:after')
     let bgColorOp = $$('.bg-color-op')
     let code = colorName.getAttribute('code-color')
     bgColors.forEach(element => {
@@ -415,34 +427,27 @@ function changeColor (colorName) {
     bgColorOp.forEach(element => {
         element.setAttribute('style','background-color: rgba(' + code + ',0.8)!important')
     })
-    textColorAfters.forEach(element => {
-        element.setAttribute('style','background-color: rgba(' + code + ',1)!important')
-    })
-//   line nav
-let lineNav = $('.header__navLine')
-let navItems = $$('.header__navitem')
-let arrWidthNavItem = []
-let positionLeft = 0
-navItems.forEach((element,index) => {
-   arrWidthNavItem.push(element.clientWidth*index)
-   element.onmouseover = function () {
-    positionLeft = arrWidthNavItem[index] + 12
-    lineNav.setAttribute('style','left:'+ positionLeft + 'px')
-    // lineNav.setAttribute('style','width:'+ arrWidthNavItem[1] + 'px')
-    }
-})
-
+    console.log(1)
+    // let colors = $$('.color')
+    // colors.forEach(element => {
+    //     element.classList.remove('color__item--active')
+    // })
+    colorName.classList.add('color__item--active')
 }
 function nextProductSale (data) {
     btnNextProductSale.onclick = function () {
         currentId++
-        renderProductSale(filterProductSale(data))
+        renderProductSale(filterProductSale(data));
+        handleModel(data)
     }
 }
 function prevProductSale (data) {
     btnPrevProductSale.onclick = function () {
         currentId -= (limit*2 - 1)
+        
         renderProductSale(filterProductSale(data))
+    handleModel(data)
+
     }
 }
 function handleActiveType (type) {
@@ -507,79 +512,238 @@ function handleDotAccessory (data,accessory,start) {
    
 }
 function renderModal (data,elementName) {
+   
   let elementModal = $('.modal-body')
   let dataProduct = elementName.parentElement.parentElement.getAttribute('data-product')
   let product = data.filter(element => {
     return element.id == dataProduct
   })
+
   
   let productItem = product[0]
-  elementModal.innerHTML = `
-  <div class="box-detail__img col-6">
-  <div class="box-detail__controls">
-      <button class="box-detail__control bg-color" id="box-detail__control--prev">
-          <i
-              class="fa-solid fa-angle-left"></i>
-      </button>
-      <button class="box-detail__control bg-color" id="box-detail__control--next">
-          <i class="fa-solid fa-angle-right"></i>
-      </button>
+  let html = ``
+  if(productItem.nsx === 'perfume') {
+    html =  `
+    <div class="box-detail__img col-6">
+    <div class="box-detail__controls">
+        <button class="box-detail__control bg-color" id="box-detail__control--prev">
+            <i
+                class="fa-solid fa-angle-left"></i>
+        </button>
+        <button class="box-detail__control bg-color" id="box-detail__control--next">
+            <i class="fa-solid fa-angle-right"></i>
+        </button>
+    </div>
+    <img src= ${productItem.productImg} alt="">
   </div>
-  <img src= ${productItem.productImg} alt="">
-</div>
-<div class="box-detail__detail col-6">
-  <h2 class="box-detail__name">
-  ${productItem.productName}
-  </h2>
-  <div class="box-detail__price">
-      <span class="box-detail__sale"> ${productItem.productSale}₫</span>
-      <span class="box-detail__cost">${productItem.productCost}₫</span>
+  <div class="box-detail__detail col-6">
+    <h2 class="box-detail__name">
+    ${productItem.productName}
+    </h2>
+    <div class="box-detail__price">
+        <span class="box-detail__sale">${productItem.productCost}₫</span>
+    </div>
+    <div class="box-detail__size">
+        <span class="box-detail__sizeName">Kích thước: 20</span>
+        <ul class="box-detail__listSize ">
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">30ml</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">50ml</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">100ml</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">150ml</button>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="box-detail__btns">
+        <div class="box-detail__count">
+            <button class="box-detail__btn" id="box-detail__btn--next"><i class="fa-solid fa-plus"></i></button>
+            <span class="box-detail__amount">1</span>
+            <button class="box-detail__btn" id="box-detail__btn--prev">
+                <i class="fa-solid fa-minus"></i>
+            </button>
+        </div>
+        <button class="box-detail__add bg-color">thêm vào giỏ</button>
+    </div>
+    <button class="box-detail__detailAll bg-color">xem chi tiết
+        <i class="fa-solid fa-angles-right"></i>
+    </button>
   </div>
-  <div class="box-detail__size">
-      <span class="box-detail__sizeName">Kích thước: 20</span>
-      <ul class="box-detail__listSize ">
-          <li class="box-detail__sizeItem">
-              <button class="box-detail__sizeBtn bg-color">38</button>
-          </li>
-          <li class="box-detail__sizeItem">
-              <button class="box-detail__sizeBtn bg-color">39</button>
-          </li>
-          <li class="box-detail__sizeItem">
-              <button class="box-detail__sizeBtn bg-color">40</button>
-          </li>
-          <li class="box-detail__sizeItem">
-              <button class="box-detail__sizeBtn bg-color">41</button>
-          </li>
-          <li class="box-detail__sizeItem">
-              <button class="box-detail__sizeBtn bg-color">42</button>
-          </li>
-          <li class="box-detail__sizeItem">
-              <button class="box-detail__sizeBtn bg-color">43</button>
-          </li>
-          <li class="box-detail__sizeItem">
-              <button class="box-detail__sizeBtn bg-color">44</button>
-          </li>
-      </ul>
+    `
+  }else if(productItem.nsx === 'jewelry'){
+    html =  `
+    <div class="box-detail__img col-6">
+    <div class="box-detail__controls">
+        <button class="box-detail__control bg-color" id="box-detail__control--prev">
+            <i
+                class="fa-solid fa-angle-left"></i>
+        </button>
+        <button class="box-detail__control bg-color" id="box-detail__control--next">
+            <i class="fa-solid fa-angle-right"></i>
+        </button>
+    </div>
+    <img src= ${productItem.productImg} alt="">
   </div>
-  <div class="box-detail__btns">
-      <div class="box-detail__count">
-          <button class="box-detail__btn" id="box-detail__btn--next"><i class="fa-solid fa-plus"></i></button>
-          <span class="box-detail__amount">1</span>
-          <button class="box-detail__btn" id="box-detail__btn--prev">
-              <i class="fa-solid fa-minus"></i>
-          </button>
-      </div>
-      <button class="box-detail__add bg-color">thêm vào giỏ</button>
+  <div class="box-detail__detail col-6">
+    <h2 class="box-detail__name">
+    ${productItem.productName}
+    </h2>
+    <div class="box-detail__price">
+        <span class="box-detail__sale">${productItem.productCost}₫</span>
+    </div>
+    
+    <div class="box-detail__btns">
+        <div class="box-detail__count">
+            <button class="box-detail__btn" id="box-detail__btn--next"><i class="fa-solid fa-plus"></i></button>
+            <span class="box-detail__amount">1</span>
+            <button class="box-detail__btn" id="box-detail__btn--prev">
+                <i class="fa-solid fa-minus"></i>
+            </button>
+        </div>
+        <button class="box-detail__add bg-color">thêm vào giỏ</button>
+    </div>
+    <button class="box-detail__detailAll bg-color">xem chi tiết
+        <i class="fa-solid fa-angles-right"></i>
+    </button>
   </div>
-  <button class="box-detail__detailAll bg-color">xem chi tiết
-      <i class="fa-solid fa-angles-right"></i>
-  </button>
-</div>
-  `
+    `
+  }else if(productItem.productSale === ''){
+    html =  `
+    <div class="box-detail__img col-6">
+    <div class="box-detail__controls">
+        <button class="box-detail__control bg-color" id="box-detail__control--prev">
+            <i
+                class="fa-solid fa-angle-left"></i>
+        </button>
+        <button class="box-detail__control bg-color" id="box-detail__control--next">
+            <i class="fa-solid fa-angle-right"></i>
+        </button>
+    </div>
+    <img src= ${productItem.productImg} alt="">
+  </div>
+  <div class="box-detail__detail col-6">
+    <h2 class="box-detail__name">
+    ${productItem.productName}
+    </h2>
+    <div class="box-detail__price">
+        <span class="box-detail__sale">${productItem.productCost}₫</span>
+    </div>
+    <div class="box-detail__size">
+        <span class="box-detail__sizeName">Kích thước: 20</span>
+        <ul class="box-detail__listSize ">
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">38</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">39</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">40</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">41</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">42</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">43</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">44</button>
+            </li>
+        </ul>
+    </div>
+    <div class="box-detail__btns">
+        <div class="box-detail__count">
+            <button class="box-detail__btn" id="box-detail__btn--next"><i class="fa-solid fa-plus"></i></button>
+            <span class="box-detail__amount">1</span>
+            <button class="box-detail__btn" id="box-detail__btn--prev">
+                <i class="fa-solid fa-minus"></i>
+            </button>
+        </div>
+        <button class="box-detail__add bg-color">thêm vào giỏ</button>
+    </div>
+    <button class="box-detail__detailAll bg-color">xem chi tiết
+        <i class="fa-solid fa-angles-right"></i>
+    </button>
+  </div>
+    `
+  }else {
+    html =  `
+    <div class="box-detail__img col-6">
+    <div class="box-detail__controls">
+        <button class="box-detail__control bg-color" id="box-detail__control--prev">
+            <i
+                class="fa-solid fa-angle-left"></i>
+        </button>
+        <button class="box-detail__control bg-color" id="box-detail__control--next">
+            <i class="fa-solid fa-angle-right"></i>
+        </button>
+    </div>
+    <img src= ${productItem.productImg} alt="">
+  </div>
+  <div class="box-detail__detail col-6">
+    <h2 class="box-detail__name">
+    ${productItem.productName}
+    </h2>
+    <div class="box-detail__price">
+        <span class="box-detail__sale"> ${productItem.productSale}₫</span>
+        <span class="box-detail__cost">${productItem.productCost}₫</span>
+    </div>
+    <div class="box-detail__size">
+        <span class="box-detail__sizeName">Kích thước: 20</span>
+        <ul class="box-detail__listSize ">
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">38</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">39</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">40</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">41</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">42</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">43</button>
+            </li>
+            <li class="box-detail__sizeItem">
+                <button class="box-detail__sizeBtn bg-color">44</button>
+            </li>
+        </ul>
+    </div>
+    <div class="box-detail__btns">
+        <div class="box-detail__count">
+            <button class="box-detail__btn" id="box-detail__btn--next"><i class="fa-solid fa-plus"></i></button>
+            <span class="box-detail__amount">1</span>
+            <button class="box-detail__btn" id="box-detail__btn--prev">
+                <i class="fa-solid fa-minus"></i>
+            </button>
+        </div>
+        <button class="box-detail__add bg-color">thêm vào giỏ</button>
+    </div>
+    <button class="box-detail__detailAll bg-color">xem chi tiết
+        <i class="fa-solid fa-angles-right"></i>
+    </button>
+  </div>
+    `
+  }
+  elementModal.innerHTML = html
+  changeColor(btnColorBlack)
 }
 function changeColor (colorName) {
   let bgColors = $$('.bg-color')
-  console.log(bgColors)
   let textColors = $$('.text-color')
   let textColorAfters = $$('.text-color:after')
   let bgColorOp = $$('.bg-color-op')
@@ -625,11 +789,11 @@ function start (data) {
     renderAccessory(filterProductType(data,'jewelry'),listJewelry,0)
     // lang nghe va xu ly events
     handleEvents(data)
-    //
-changeColor(btnColorBlack) 
+    //color default
+    changeColor(btnColorBlack) 
 
 }
 getApi(productApi,start)
-//color default
+
 //-----------------
 // start

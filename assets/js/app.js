@@ -213,6 +213,9 @@ let btnPerfumePrevHover = document.querySelector("#btn__perfumePrev--hover");
 btnHover(btnPerfumeNext,btnPerfumeNextHover)
 btnHover(btnPerfumePrev,btnPerfumePrevHover)
 
+//default color
+
+
 
 
  

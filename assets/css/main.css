@@ -2,12 +2,14 @@ html {
     font-size: 16px;
     font-family: myfont;
 }
+
 .hidden {
    display: none !important;
 }
 .main {
    position: relative;
 }
+
 /* color */
 .color--black {
    background-color: rgba(32,32,32,1)!important;
@@ -333,11 +335,23 @@ nav {
  .showBtnBack {
   animation: showBtn linear 1s 1 forwards;
  }
+ .hiddenBtnBack {
+   animation: hiddenBtn linear 1s 1 backwards;
+ }
  @keyframes showBtn {
    to {
       right: 3.5%;
       opacity: 1;
-
+   }
+ }
+ @keyframes hiddenBtn {
+   from {
+      right: 3.5%;
+      opacity: 1;
+   }
+   to {
+      right: -10%;
+      opacity: 0;
    }
  }
  /* list color */
@@ -453,6 +467,116 @@ nav {
    width: 0px;
    height: 0px;
  }
+ /* box detail */
+ .modal-dialog {
+   max-width: 70%;
+ }
+
+ .box-detail__img {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ .box-detail__img  img {
+   width: 90%;
+ }
+ .box-detail__controls {
+  
+ }
+ .box-detail__control {
+   border: none;
+   padding: 4px 12px;
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   border-radius: 50%;
+ }
+ .box-detail__control > i {
+   color: #fff;
+ }
+ .box-detail__control:hover {
+   box-shadow: #000 0px 1px 3px;
+
+ }
+#box-detail__control--next {
+   right: 5px;
+}
+#box-detail__control--prev {
+   left: 5px;
+}
+/* box-detail__detail */
+.box-detail__name {
+   font-size: 20px;
+   margin-bottom: 5px;
+}
+.box-detail__sale {
+   color: #ff0000;
+    font-weight: 600;
+    font-size: 16px;
+   margin-right: 20px;
+}
+.box-detail__cost {
+   color: #707070;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: line-through;
+}
+.box-detail__listSize {
+   list-style: none;
+   display: flex;
+   justify-content: space-between;
+   padding: 10px;
+}
+.box-detail__sizeBtn {
+   padding: 4px 8px;
+   border-radius: 4px;
+   border: none;
+   color: #fff;
+}
+.box-detail__btns {
+   padding: 10px 5px;
+   display: flex;
+}
+.box-detail__count {
+   border: 2px solid #707070;
+   padding: 4px 8px;
+   font-size: 20px;
+   border-radius: 8px;
+}
+.box-detail__amount {
+   padding: 4px 12px;
+   font-weight: 600;
+}
+.box-detail__btn {
+   border: none;
+   background-color: transparent;
+}
+.box-detail__add {
+   margin-left: 20px;
+   padding: 4px 8px;
+   border-radius: 4px;
+   border: none;
+   text-transform: capitalize;
+   color: #fff;
+}
+.box-detail__add:hover {
+   box-shadow: #000 0px 1px 3px;
+   color: yellow;
+}
+.box-detail__detailAll {
+   padding: 4px 8px;
+   border-radius: 4px;
+   border: none;
+   text-transform: capitalize;
+   font-weight: 500;
+   margin-bottom: 50px;
+   color: #fff;
+}
+.box-detail__detailAll:hover {
+   color: yellow;
+   box-shadow: #000 0px 1px 3px;
+}
  /* scroll */
  /* width */
 body::-webkit-scrollbar {

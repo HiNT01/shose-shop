@@ -32,6 +32,7 @@
 </head>
 <body>
     <div class="main">
+        <!-- list color -->
         <div class="list-color">
             <span class="color__btnSetting" id="color__btnSetting">
                 <i class="fa-solid fa-gear"></i>
@@ -64,6 +65,7 @@
                 </li>
             </ul>
         </div>
+        <!-- list contact -->
         <div class="list-contact">
             <ul class="socials footer__socials--vertical">
                 <li class="social social--vertical social--item zalo">
@@ -109,10 +111,88 @@
                 </li>
             </ul>
         </div>
-
-        <span  class="btn-back bg-color">
+        <!-- btn back to top -->
+        <span class="btn-back bg-color">
             <i class="fa-solid fa-angle-up"></i>
         </span>
+        <!-- box detail product -->
+        <!-- Button trigger modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                    <div class="modal-body row">
+                        <div class="box-detail__img col-6">
+                            <div class="box-detail__controls">
+                                <button class="box-detail__control bg-color" id="box-detail__control--prev">
+                                    <i
+                                        class="fa-solid fa-angle-left"></i>
+                                </button>
+                                <button class="box-detail__control bg-color" id="box-detail__control--next">
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </button>
+                            </div>
+                            <img src="./assets/img/product/shoes/sh1.png" alt="">
+                        </div>
+                        <div class="box-detail__detail col-6">
+                            <h2 class="box-detail__name">
+                                Giày Nike Jordan 1 Retro High OG SP 'Utility Stash' DN4336-001
+                            </h2>
+                            <div class="box-detail__price">
+                                <span class="box-detail__sale">7,929,900₫</span>
+                                <span class="box-detail__cost">7,929,900₫</span>
+                            </div>
+                            <div class="box-detail__size">
+                                <span class="box-detail__sizeName">Kích thước: 20</span>
+                                <ul class="box-detail__listSize ">
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">38</button>
+                                    </li>
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">39</button>
+                                    </li>
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">40</button>
+                                    </li>
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">41</button>
+                                    </li>
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">42</button>
+                                    </li>
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">43</button>
+                                    </li>
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">44</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="box-detail__btns">
+                                <div class="box-detail__count">
+                                    <button class="box-detail__btn" id="box-detail__btn--next"><i class="fa-solid fa-plus"></i></button>
+                                    <span class="box-detail__amount">1</span>
+                                    <button class="box-detail__btn" id="box-detail__btn--prev">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </button>
+                                </div>
+                                <button class="box-detail__add bg-color">thêm vào giỏ</button>
+                            </div>
+                            <button class="box-detail__detailAll bg-color">xem chi tiết
+                                <i class="fa-solid fa-angles-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+      
         <!-- header -->
         <header>
             <div id="header" class="container-fluid bg-color">
@@ -267,58 +347,7 @@
                         </div>
                         <!--  -->
                         <div class="product__items" id="product-sale">
-                            <div href="#" class="product__item">
-                                <div class="product__itemImg">
-                                    <span class="product__sale">
-                                        -11%
-                                    </span>
-                                    <button class="hidden" id="btn-search-hidden">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-                                    <img src="./assets/img/product/shoes/sh1.png" alt="" id="img-visible">
-                                    <img src="./assets/img/product/shoes/sh1-h.png" alt=""  id="img-hidden">
-                                    <button class="product__btnAdds">
-                                       <span class="product__btnAdd">
-                                        <i class="fa-sharp fa-solid fa-cart-plus"></i>
-                                       </span>
-                                        <span class="product__btnAddText">thêm vào giỏ</span>
-                                    </button>
-                                </div>
-                                <div class="product__detail">
-                                    <!-- name -->
-                                    <h3 class="product__name">
-                                        Giày Nike Jordan 1 Retro High OG SP 'Utility Stash' DN4336-001
-                                    </h3>
-                                    <!-- star -->
-                                    <ul class="product__evaluates">
-                                        <li class="product__evaluate">
-                                            <i class="fa-solid fa-star"></i>
-                                        </li>
-                                        <li class="product__evaluate">
-                                            <i class="fa-solid fa-star"></i>
-                                        </li>
-                                        <li class="product__evaluate">
-                                            <i class="fa-solid fa-star"></i>
-                                        </li>
-                                        <li class="product__evaluate">
-                                            <i class="fa-solid fa-star"></i>
-                                        </li>
-                                        <li class="product__evaluate">
-                                            <i class="fa-solid fa-star"></i>
-                                        </li>
-                                        <li class="product__evaluate">(0)</li>
-                                    </ul>
-                                    <!-- price -->
-                                    <div class="product__prices">
-                                        <div class="product__price product__price--sale">
-                                            792900 đ
-                                        </div>
-                                        <div class="product__price product__price--cost">
-                                            792900 đ
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                          
                         </div>
                 
                     </div>
@@ -830,6 +859,11 @@
         <!-- end footer -->
     </div>
 </body>
-<script src="./assets/js/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script src="./assets/js/main.js"></script>
+<script src="./assets/js/app.js"></script>
+
+<!-- bootstrap -->
+
 </html>

@@ -24,7 +24,7 @@ let btnColorBrown = $('#color--brown')
 let btnColorRed = $('#color--red')
 let btnColorPink = $('#color--pink')
 let btnColorGreen = $('#color--green')
-
+let boxDetailBtnClose = $('#box-detail__btn-close')
 // get api
 function getApi (api,callback) {
     fetch(api)
@@ -50,9 +50,9 @@ function renderAccessory(data,element,start) {
          let productItem = data[currentIdAccessory] 
          htmls += `  <div href="#" class="product__item product__item--2" data-product = ${productItem.id}>
          <div class="product__itemImg">
-             <button class="hidden" id="btn-search-hidden">
-                 <i class="fa-solid fa-magnifying-glass"></i>
-             </button>
+         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btn-search-hidden">
+         <i class="fa-solid fa-magnifying-glass "></i>
+            </button>
              <img src=${productItem.productImg} alt="" id="img-visible">
              <img src=${productItem.productImgHover} alt=""  id="img-hidden">
              <button class="product__btnAdds">
@@ -98,6 +98,8 @@ function renderAccessory(data,element,start) {
        element.innerHTML = htmls
        handleDotAccessory(data,element,start)
         currentIdAccessory--
+
+
 }
 //render
 
@@ -120,9 +122,9 @@ function renderProductSale(data) {
              <span class="product__sale">
              11%
              </span>
-             <button  id="btn-search-hidden">
-                 <i class="fa-solid fa-magnifying-glass"></i>
-             </button>
+             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btn-search-hidden">
+         <i class="fa-solid fa-magnifying-glass "></i>
+            </button>
              <img src=${productItem.productImg} alt="" id="img-visible">
             <img src=${productItem.productImgHover} alt=""  id="img-hidden">
              <button class="product__btnAdds">
@@ -170,7 +172,8 @@ function renderProductSale(data) {
         }
         listProductSale.innerHTML = htmls
         currentId--
-        console.log(currentId)
+        
+
 }
 function filterProductSale (data) {
     let arrProducts = data.filter(element => {
@@ -190,12 +193,11 @@ function renderProductType(data) {
         let htmls = ''
         for(currentId ; currentId < max ; currentId++) {
          let productItem = data[currentId] 
-         htmls += ` <div href="#" class="product__item" data-product = ${productItem.productId} >
+         htmls += ` <div href="#" class="product__item" data-product = ${productItem.id} >
          <div class="product__itemImg">
-            
-             <button  id="btn-search-hidden">
-                 <i class="fa-solid fa-magnifying-glass"></i>
-             </button>
+         <button type="button" class="btn btn-primary btn-search-hidden" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+         <i class="fa-solid fa-magnifying-glass "></i>
+            </button>
              <img src=${productItem.productImg} alt="" id="img-visible">
             <img src=${productItem.productImgHover} alt=""  id="img-hidden">
              <button class="product__btnAdds">
@@ -239,6 +241,8 @@ function renderProductType(data) {
      </div>`
         }
         listProductType.innerHTML = htmls
+
+
 }
 function handleEvents (data) {
   //onclick next product sale
@@ -328,9 +332,11 @@ function handleEvents (data) {
       document.body.scrollTop > 300 ||
       document.documentElement.scrollTop > 300
     ) {
+      btnBackTop.classList.remove('hiddenBtnBack')
       btnBackTop.classList.add("showBtnBack");
     } else {
       btnBackTop.classList.remove("showBtnBack");
+      btnBackTop.classList.add('hiddenBtnBack')
     }
   };
 
@@ -370,6 +376,28 @@ function handleEvents (data) {
   btnColorGreen.onclick = function () { changeColor(btnColorGreen)}
   btnColorBlue.onclick = function () { changeColor(btnColorBlue) }
   btnColorBrown.onclick = function () { changeColor(btnColorBrown)}
+  // render detail product
+  let btnSearchHiddens = $$('.btn-search-hidden')
+  btnSearchHiddens.forEach(element => {
+    element.onclick = function () {
+      renderModal(data,element)
+    }
+  })
+
+  
+}
+
+function disable() {
+  // To get the scroll position of current webpage
+ let TopScroll = window.pageYOffset || document.documentElement.scrollTop
+ let LeftScroll = window.pageXOffset || document.documentElement.scrollLeft
+  // if scroll happens, set it to the previous value
+  window.onscroll = function() {
+  window.scrollTo(LeftScroll, TopScroll);
+          };
+}
+function enable() {
+  window.onscroll = function() {};
 }
 function changeColor (colorName) {
     let bgColors = $$('.bg-color')
@@ -403,8 +431,6 @@ navItems.forEach((element,index) => {
     // lineNav.setAttribute('style','width:'+ arrWidthNavItem[1] + 'px')
     }
 })
-
-console.log(arrWidthNavItem)
 
 }
 function nextProductSale (data) {
@@ -480,9 +506,113 @@ function handleDotAccessory (data,accessory,start) {
    }
    
 }
+function renderModal (data,elementName) {
+  let elementModal = $('.modal-body')
+  let dataProduct = elementName.parentElement.parentElement.getAttribute('data-product')
+  let product = data.filter(element => {
+    return element.id == dataProduct
+  })
+  
+  let productItem = product[0]
+  elementModal.innerHTML = `
+  <div class="box-detail__img col-6">
+  <div class="box-detail__controls">
+      <button class="box-detail__control bg-color" id="box-detail__control--prev">
+          <i
+              class="fa-solid fa-angle-left"></i>
+      </button>
+      <button class="box-detail__control bg-color" id="box-detail__control--next">
+          <i class="fa-solid fa-angle-right"></i>
+      </button>
+  </div>
+  <img src= ${productItem.productImg} alt="">
+</div>
+<div class="box-detail__detail col-6">
+  <h2 class="box-detail__name">
+  ${productItem.productName}
+  </h2>
+  <div class="box-detail__price">
+      <span class="box-detail__sale"> ${productItem.productSale}₫</span>
+      <span class="box-detail__cost">${productItem.productCost}₫</span>
+  </div>
+  <div class="box-detail__size">
+      <span class="box-detail__sizeName">Kích thước: 20</span>
+      <ul class="box-detail__listSize ">
+          <li class="box-detail__sizeItem">
+              <button class="box-detail__sizeBtn bg-color">38</button>
+          </li>
+          <li class="box-detail__sizeItem">
+              <button class="box-detail__sizeBtn bg-color">39</button>
+          </li>
+          <li class="box-detail__sizeItem">
+              <button class="box-detail__sizeBtn bg-color">40</button>
+          </li>
+          <li class="box-detail__sizeItem">
+              <button class="box-detail__sizeBtn bg-color">41</button>
+          </li>
+          <li class="box-detail__sizeItem">
+              <button class="box-detail__sizeBtn bg-color">42</button>
+          </li>
+          <li class="box-detail__sizeItem">
+              <button class="box-detail__sizeBtn bg-color">43</button>
+          </li>
+          <li class="box-detail__sizeItem">
+              <button class="box-detail__sizeBtn bg-color">44</button>
+          </li>
+      </ul>
+  </div>
+  <div class="box-detail__btns">
+      <div class="box-detail__count">
+          <button class="box-detail__btn" id="box-detail__btn--next"><i class="fa-solid fa-plus"></i></button>
+          <span class="box-detail__amount">1</span>
+          <button class="box-detail__btn" id="box-detail__btn--prev">
+              <i class="fa-solid fa-minus"></i>
+          </button>
+      </div>
+      <button class="box-detail__add bg-color">thêm vào giỏ</button>
+  </div>
+  <button class="box-detail__detailAll bg-color">xem chi tiết
+      <i class="fa-solid fa-angles-right"></i>
+  </button>
+</div>
+  `
+}
+function changeColor (colorName) {
+  let bgColors = $$('.bg-color')
+  console.log(bgColors)
+  let textColors = $$('.text-color')
+  let textColorAfters = $$('.text-color:after')
+  let bgColorOp = $$('.bg-color-op')
+  let code = colorName.getAttribute('code-color')
+  bgColors.forEach(element => {
+      element.setAttribute('style','background-color: rgba(' + code + ',1)!important')
+  })
+  textColors.forEach(element => {
+      element.setAttribute('style','color: rgba(' + code + ',1)!important')
+  })
+
+  bgColorOp.forEach(element => {
+      element.setAttribute('style','background-color: rgba(' + code + ',0.8)!important')
+  })
+  textColorAfters.forEach(element => {
+      element.setAttribute('style','background-color: rgba(' + code + ',1)!important')
+  })
+//   line nav
+let lineNav = $('.header__navLine')
+let navItems = $$('.header__navitem')
+let arrWidthNavItem = []
+let positionLeft = 0
+navItems.forEach((element,index) => {
+ arrWidthNavItem.push(element.clientWidth*index)
+ element.onmouseover = function () {
+  positionLeft = arrWidthNavItem[index] + 12
+  lineNav.setAttribute('style','left:'+ positionLeft + 'px')
+  // lineNav.setAttribute('style','width:'+ arrWidthNavItem[1] + 'px')
+  }
+})
+
+}
 function start (data) {
-    //color default
-    changeColor(btnColorBlack) 
     //render product sale
     renderProductSale(filterProductSale(data))
     // default product type
@@ -495,8 +625,11 @@ function start (data) {
     renderAccessory(filterProductType(data,'jewelry'),listJewelry,0)
     // lang nghe va xu ly events
     handleEvents(data)
-}
+    //
+changeColor(btnColorBlack) 
 
+}
 getApi(productApi,start)
+//color default
 //-----------------
 // start

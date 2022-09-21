@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- seo -->
+    <meta name="description" content="This is the website of hint">
+    
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="hint website">
+    <meta itemprop="description" content="This is the website of hint">
+    <meta itemprop="image"  content="./assets/img/hint.jpg">
+    
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="#">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="hint website">
+    <meta property="og:description" content="This is the website of hint">
+    <meta property="og:image" content="./assets/img/hint.jpg">
+    <!-- ///// -->
+    <link rel="shortcut icon" href="./assets/img/hint.jpg" type="image/x-icon">
+    <title>My shop hint</title>
+    <!-- css -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/font.css">
+    <!-- <link rel="stylesheet" href="./assets/css/grid.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="main">
+        <!-- list color -->
+        <div class="list-color">
+            <span class="color__btnSetting" id="color__btnSetting">
+                <i class="fa-solid fa-gear"></i>
+            </span>
+            <ul class="colors" id="color__boxSetting">
+                <li class="color" code-color="32,32,32"  id="color--black">
+                    <span class="color__item"></span>
+                </li>
+                <li class="color"  code-color="52,96,245" id="color--blue">
+                    <span class="color__item"></span>
+                </li>
+                <li class="color"  code-color="198,98,239" id="color--violet">
+                    <span class="color__item"></span>
+                </li>
+                <li class="color" code-color="110,143,251"  id="color--drakBlue">
+                    <span class="color__item"></span>
+                </li>
+                <li class="color"  code-color="48,151,133" id="color--green">
+                    <span class="color__item"></span>
+                </li>
+                <li class="color"  code-color="170,28,28" id="color--red">
+                    <span class="color__item"></span>
+                </li>
+                
+                <li class="color" code-color="216,32,176" id="color--pink">
+                    <span class="color__item"></span>
+                </li>
+                <li class="color" code-color="152,109,92" id="color--brown">
+                    <span class="color__item"></span>
+                </li>
+            </ul>
+        </div>
+        <!-- list contact -->
+        <div class="list-contact">
+            <ul class="socials footer__socials--vertical">
+                <li class="social social--vertical social--item zalo">
+                    <a href="" class="social__link ">
+                        <img src="./assets/img/zalo-icon_0adb17d386cc4785b30ef66e470b4342.svg" alt="">
+                    </a>
+                </li>
+                <li class="social social--vertical social--item tiktok">
+                    <a href="" class="social__link ">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </li>
+                <li class="social social--vertical social--item twitter">
+                    <a href="" class="social__link ">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="social social--vertical social--item youtube">
+                    <a href="" class="social__link ">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </li>
+                <li class="social social--vertical social--item instagram">
+                    <a href="" class="social__link ">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </li>
+                <li class="social social--vertical social--item facebook">
+                    <a href="" class="social__link ">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </li>
+                <li class="social social--vertical social--item phone">
+                    <a href="" class="social__link ">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                </li>
+                <li class="social social--vertical  social__menu">
+                    <div id="social__icon-menu" class="social__link ">
+                       <span class=""><i class="fa-solid fa-thumbs-up"></i></span> 
+                       <span class="social__icon--active"><i class="fa-solid fa-heart"></i></span> 
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- btn back to top -->
+        <span class="btn-back bg-color">
+            <i class="fa-solid fa-angle-up"></i>
+        </span>
+        <!-- box detail product -->
+        <!-- Button trigger modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                    <div class="modal-body row">
+                        <div class="box-detail__item row"></div>
+                        <!-- <div class="box-detail__img col-6">
+                            <div class="box-detail__controls">
+                                <button class="box-detail__control bg-color" id="box-detail__control--prev">
+                                    <i
+                                        class="fa-solid fa-angle-left"></i>
+                                </button>
+                                <button class="box-detail__control bg-color" id="box-detail__control--next">
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </button>
+                            </div>
+                            <img src="./assets/img/product/shoes/sh1.png" alt="">
+                        </div>
+                        <div class="box-detail__detail col-6">
+                            <h2 class="box-detail__name">
+                                Giày Nike Jordan 1 Retro High OG SP 'Utility Stash' DN4336-001
+                            </h2>
+                            <div class="box-detail__price">
+                                <span class="box-detail__sale">7,929,900₫</span>
+                                <span class="box-detail__cost">7,929,900₫</span>
+                            </div>
+                            <div class="box-detail__size">
+                                <span class="box-detail__sizeName">Kích thước: 20</span>
+                                <ul class="box-detail__listSize ">
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">38</button>
+                                    </li>
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">39</button>
+                                    </li>
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">40</button>
+                                    </li>
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">41</button>
+                                    </li>
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">42</button>
+                                    </li>
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">43</button>
+                                    </li>
+                                    <li class="box-detail__sizeItem">
+                                        <button class="box-detail__sizeBtn bg-color">44</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="box-detail__btns">
+                                <div class="box-detail__count">
+                                    <button class="box-detail__btn" id="box-detail__btn--next"><i class="fa-solid fa-plus"></i></button>
+                                    <span class="box-detail__amount">1</span>
+                                    <button class="box-detail__btn" id="box-detail__btn--prev">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </button>
+                                </div>
+                                <button class="box-detail__add bg-color">thêm vào giỏ</button>
+                            </div>
+                            <button class="box-detail__detailAll bg-color">xem chi tiết
+                                <i class="fa-solid fa-angles-right"></i>
+                            </button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+      
+        <!-- header -->
+        <header>
+            <div id="header" class="container-fluid bg-color">
+                <div class="header__wrapper container">
+                    <div class="row">
+                        <!-- logo web -->
+                        <a href="#" class="logo col col-lg-2">
+                            <img src="./assets/img/logo-scofield-while_2d1f4117bd8d4867acc370cb4b35e531.png" alt="logo">
+                        </a>
+                        <!-- form -->
+                        <div class="header__form col col-lg-6">
+                            <form action="" method="post">
+                                <input type="text" name="key-search" id="input-search">
+                                <button class="header__btn bg-color">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <!--  -->
+                        <div class="header__icons col col-lg-4">
+                            <div class="row">
+                                <button class="col col-lg-4 header__icon">
+                                    <div class="row">
+                                        <i class="fa-solid fa-location-dot col col-lg-4"></i>
+                                        <span class="col col-lg-8">hệ thống cửa hàng</span>
+                                    </div>
+                                </button>
+                                <!-- //// -->
+                                <button class="col col-lg-4 header__icon">
+                                    <div class="row">
+                                        <i class="fa-solid fa-user col col-lg-3"></i>
+                                        <span class="col col-lg-9">đăng nhập<br>đăng ký</span>
+                                    </div>
+                                </button>
+                                <!-- ///// -->
+                                <button class="col col-lg-4 header__icon">
+                                    <div class="row">
+                                        <i class="fa-solid fa-cart-shopping col col-lg-4"></i>
+                                        <span class="col col-lg-8">giỏ hàng
+    
+                                        </span>
+                                        <span class="header__count-product">0</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /////// -->
+    
+                    </div>
+                </div>
+            </div>
+            <!-- nav -->
+            <nav class="container-fluid">
+               
+                <ul class="header__nav container">
+                    <span class="header__navLine"></span>
+                    <li class="header__navitem">
+                        <a href="index.html" class="header__link text-color">trang chủ</a>
+                    </li>
+                    <li class="header__navitem header__parent-nav">
+                        <span class="header__link text-color">giày sneaker
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </span>
+                        <ul class="header__subNav">
+                            <li class="header__subnav-item">
+                                <a href="product.html" class="header__link text-color">
+                                    adidas
+                                </a>
+                            </li>
+                            <li class="header__subnav-item">
+                                <a href="" class="header__link text-color">
+                                    nike
+                                </a>
+                            </li>
+                            <li class="header__subnav-item">
+                                <a href="" class="header__link text-color">
+                                    gucci
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="header__navitem">
+                        <a href="#" class="header__link text-color">nước hoa</a>
+                    </li>
+                    <li class="header__navitem">
+                        <a href="#" class="header__link text-color">phụ kiện</a>
+                    </li>
+                    <li class="header__navitem">
+                        <a href="#" class="header__link text-color">tin tức</a>
+                    </li>
+                    <li class="header__navitem">
+                        <a href="#" class="header__link text-color">hướng dẫn</a>
+                    </li>
+                    <li class="header__navitem">
+                        <a href="#" class="header__link text-color">liên hệ</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <!-- end header -->
+        <!-- content -->
+        <div class="content container-fluid">
+            <div class="content__wrapper container">
+                <div class="content row">
+                    <div class="content__right col-4">
+                        filter
+                    </div>
+                    <div class="content__lef col-8">
+                        <!-- banner -->
+                        <div class="banner">
+                            <div class="banner__wrapper">
+                                <div class="banner__action container">
+                                    <div class="banner__btns">
+                                        <button class="banner__btn" id="btn__next"><i class="fa-solid fa-angle-right"></i></button>
+                                        <button class="banner__btn banner__btn--hover" id="btn__next--hover"><i
+                                                class="fa-solid fa-angle-right"></i></button>
+                                        <button class="banner__btn" id="btn__prev"><i class="fa-solid fa-angle-left"></i></button>
+                                        <button class="banner__btn banner__btn--hover" id="btn__prev--hover"><i
+                                                class="fa-solid fa-angle-left"></i></button>
+                                    </div>
+                                    <div class="banner__dots" id="dot">
+                                        <button class="banner__dot"></button>
+                                        <button class="banner__dot"></button>
+                                    </div>
+                                </div>
+                                <img src="" alt="slider" id="banner__img">
+                    
+                            </div>
+                        </div>
+                        <!-- end banner -->
+                    
+                        <!-- sneaker -->
+                        <div class="sneaker">
+                            <div class="sneaker__top">
+                                <h2 class="product__type product__type--black">
+                                    GIÀY SNEAKER
+                                </h2>
+                                <ul class="sneaker__types">
+                                    <li class="sneaker__type">
+                                        <button class="sneaker__type-item" id="type-adidas">giày adidas</button>
+                                    </li>
+                                    <li class="sneaker__type">
+                                        <button class="sneaker__type-item" id="type-nike">giày nike</button>
+                                    </li>
+                                    <li class="sneaker__type">
+                                        <button class="sneaker__type-item" id="type-gucci">giày gucci</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--  -->
+                            <div class="product__items product__items--nopadding " id="product-type">
+                                <div href="#" class="product__item ">
+                                    <div class="product__itemImg">
+                                        <span class="product__sale">
+                                            -11%
+                                        </span>
+                                        <button class="hidden" id="btn-search-hidden">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </button>
+                                        <img src="./assets/img/product/shoes/sh1.png" alt="" id="img-visible">
+                                        <img src="./assets/img/product/shoes/sh1-h.png" alt="" id="img-hidden">
+                                        <button class="product__btnAdds">
+                                            <span class="product__btnAdd">
+                                                <i class="fa-sharp fa-solid fa-cart-plus"></i>
+                                            </span>
+                                            <span class="product__btnAddText">thêm vào giỏ</span>
+                                        </button>
+                                    </div>
+                                    <div class="product__detail">
+                                        <!-- name -->
+                                        <h3 class="product__name">
+                                            Giày Nike Jordan 1 Retro High OG SP 'Utility Stash' DN4336-001
+                                        </h3>
+                                        <!-- star -->
+                                        <ul class="product__evaluates">
+                                            <li class="product__evaluate">
+                                                <i class="fa-solid fa-star"></i>
+                                            </li>
+                                            <li class="product__evaluate">
+                                                <i class="fa-solid fa-star"></i>
+                                            </li>
+                                            <li class="product__evaluate">
+                                                <i class="fa-solid fa-star"></i>
+                                            </li>
+                                            <li class="product__evaluate">
+                                                <i class="fa-solid fa-star"></i>
+                                            </li>
+                                            <li class="product__evaluate">
+                                                <i class="fa-solid fa-star"></i>
+                                            </li>
+                                            <li class="product__evaluate">(0)</li>
+                                        </ul>
+                                        <!-- price -->
+                                        <div class="product__prices">
+                                            <div class="product__price product__price--sale">
+                                                792900 đ
+                                            </div>
+                                            <div class="product__price product__price--cost">
+                                                792900 đ
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="product__btnAll">
+                                Xem tất cả
+                                <i class="fa-solid fa-angles-right"></i>
+                            </button>
+                        </div>
+                        <!-- sneaker -->
+                    </div>
+                </div>
+               
+              
+            </div>
+        </div>
+        <!-- end content -->
+       
+       
+        <!-- footer -->
+        <footer class="color--black bg-color-op">
+            <div id="footer container-fluid">
+                <div class="footer__contact container">
+                    <div class="row">
+                        <div class="footer__form col col-lg-8">
+                            <div class="row">
+                                <h3 class="footer__title col col-lg-3">đăng kí nhận tin</h3>
+                                <form class="col col-lg-7" action="" method="post">
+                                    <span class="footer__icon">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </span>
+                                    <input type="email" name="email" placeholder="Email">
+                                    <button class="footer__btn color--black-op bg-color">
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                        <span>đăng ký</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="footer__listsocial col col-lg-4">
+                            <ul class="socials  socials--horizontal ">
+                                <li class="social social--horizontal zalo">
+                                    <a href="" class="social__link ">
+                                        <img src="./assets/img/zalo-icon_0adb17d386cc4785b30ef66e470b4342.svg" alt="">
+                                    </a>
+                                </li>
+                                <li class="social social--horizontal tiktok">
+                                    <a href="" class="social__link ">
+                                        <i class="fa-brands fa-tiktok"></i>
+                                    </a>
+                                </li>
+                                <li class="social social--horizontal twitter">
+                                    <a href="" class="social__link ">
+                                        <i class="fa-brands fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="social social--horizontal youtube">
+                                    <a href="" class="social__link ">
+                                        <i class="fa-brands fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li class="social social--horizontal instagram">
+                                    <a href="" class="social__link ">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li class="social social--horizontal facebook">
+                                    <a href="" class="social__link ">
+                                        <i class="fa-brands fa-facebook"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__top container">
+                    <div class="row">
+                        <!-- //// -->
+                        <div class="col col-lg-4 not">
+                            <h3 class="footer__title">giới thiệu</h3>
+                            <ul class="footer__list">
+                                <li class="footer__item">
+                                    Wd Shoes Scofield chuyên cung cấp các loại giày authentic với giá cả ưu đãi nhất thị
+                                    trường
+                                </li>
+                                <li class="footer__item">
+                                    <span>Trung tự - Đống đa - Hà nội</span>
+                                </li>
+                                <li class="footer__item">
+                                    <a href="" class="footer__link">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <span>0962611801</span></a>
+                                </li>
+                                <li class="footer__item">
+                                    <a href="" class="footer__link">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <span>2001hient89@gmail.com</span></a>
+                                </li>
+    
+                            </ul>
+                        </div>
+                        <!-- //// -->
+                        <div class="col col-lg-4">
+                            <h3 class="footer__title">chính sách</h3>
+                            <ul class="footer__list">
+                                <li class="footer__item">
+                                    <a href="" class="footer__link">hệ thống cửa hàng</a>
+                                </li>
+                                <li class="footer__item">
+                                    <a href="" class="footer__link">giới thiệu</a>
+                                </li>
+                                <li class="footer__item">
+                                    <a href="" class="footer__link">chính sách đổi trả</a>
+                                </li>
+                                <li class="footer__item">
+                                    <a href="" class="footer__link">chính sách bảo mật</a>
+                                </li>
+                                <li class="footer__item">
+                                    <a href="" class="footer__link">điều khoản dịch vụ</a>
+                                </li>
+                                <li class="footer__item">
+                                    <a href="" class="footer__link">liên hệ</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- //// -->
+                        <div class="col col-lg-4">
+                            <h3 class="footer__title">hướng dẫn</h3>
+                            <ul class="footer__list">
+                                <li class="footer__item">
+                                    <a href="" class="footer__link">sản phẩm nổi bật</a>
+                                </li>
+                                <li class="footer__item">
+                                    <a href="" class="footer__link">tất cả sản phẩm</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__bottom color--black-op bg-color">
+                    <span>© Copyright 2022 By WD Shoes Scofield. Powered by Haravan</span>
+                </div>
+            </div>
+        </footer>
+        <!-- end footer -->
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="./assets/js/main.js"></script>
+<script src="./assets/js/app.js"></script>
+<script src="./assets/js/product.js"></script>
+<script src="./assets/js/sliderBanner.js"></script>
+
+<!-- bootstrap -->
+
+</html>

@@ -377,22 +377,64 @@ function handleEvents (data) {
     }
   };
   //   line nav
-let lineNav = $('.header__navLine')
-let navItems = $$('.header__navitem')
-let arrWidthNavItem = []
-let positionLeft = 0
-navItems.forEach((element,index) => {
-   arrWidthNavItem.push(element.clientWidth*index)
-   element.onmouseover = function () {
-    positionLeft = arrWidthNavItem[index] + 12
-    lineNav.setAttribute('style','left:'+ positionLeft + 'px')
-    }
-})
+  let lineNav = $(".header__navLine");
+  let navItems = $$(".header__navitem");
+  let arrWidthNavItem = [];
+  let positionLeft = 0;
+  navItems.forEach((element, index) => {
+    arrWidthNavItem.push(element.clientWidth * index);
+    element.onmouseover = function () {
+      positionLeft = arrWidthNavItem[index] + 12;
+      lineNav.setAttribute("style", "left:" + positionLeft + "px");
+    };
+  });
 
   //change color 
   handlChangeColor()
   // render detail product
   handleModel(data)
+  //handleEventsModal
+//   handleEventsModal()
+}
+function handleEventsModal () {
+    // control img
+    let btnNext = $('#box-detail__control--next')
+    let btnPrev = $('#box-detail__control--prev')
+    btnNext.onclick = function () {
+        let productImgHover = $('.box-detail__item .hidden')
+        let productImg = $('.box-detail__item .visible')
+        productImgHover.classList.remove('hidden') 
+        productImg.classList.add('hidden')
+        productImgHover.classList.add('visible') 
+        productImg.classList.remove('visible')
+    }
+    btnPrev.onclick = function () {
+        let productImgHover = $('.box-detail__item .hidden')
+    let productImg = $('.box-detail__item .visible')
+        productImgHover.classList.remove('hidden') 
+        productImg.classList.add('hidden')
+        productImgHover.classList.add('visible') 
+        productImg.classList.remove('visible')
+     }
+     //count product
+     let btnPlus = $('#box-detail__btn--next')
+     let btnMinus = $('#box-detail__btn--prev')
+
+     btnPlus.onclick = function () {
+        let result = $('.box-detail__amount')
+        let max = Number($('.box-detail__max').innerText)
+        let resultNumber = Number(result.innerText)
+        resultNumber++
+        resultNumber = resultNumber > max ? max : resultNumber
+        result.innerText = resultNumber
+     }
+     btnMinus.onclick = function () {
+        let result = $('.box-detail__amount')
+        let resultNumber = Number(result.innerText)
+        resultNumber--
+        resultNumber = resultNumber < 1 ? 1 : resultNumber
+        result.innerText = resultNumber
+    }
 }
 function handlChangeColor () {
     btnColorBlack.onclick = function () { changeColor(btnColorBlack) }
@@ -411,28 +453,6 @@ function handleModel(data) {
         renderModal(data,element)
       }
     })
-}
-function changeColor (colorName) {
-    let bgColors = $$('.bg-color')
-    let textColors = $$('.text-color')
-    let bgColorOp = $$('.bg-color-op')
-    let code = colorName.getAttribute('code-color')
-    bgColors.forEach(element => {
-        element.setAttribute('style','background-color: rgba(' + code + ',1)!important')
-    })
-    textColors.forEach(element => {
-        element.setAttribute('style','color: rgba(' + code + ',1)!important')
-    })
-
-    bgColorOp.forEach(element => {
-        element.setAttribute('style','background-color: rgba(' + code + ',0.8)!important')
-    })
-    console.log(1)
-    // let colors = $$('.color')
-    // colors.forEach(element => {
-    //     element.classList.remove('color__item--active')
-    // })
-    colorName.classList.add('color__item--active')
 }
 function nextProductSale (data) {
     btnNextProductSale.onclick = function () {
@@ -512,18 +532,16 @@ function handleDotAccessory (data,accessory,start) {
    
 }
 function renderModal (data,elementName) {
-   
   let elementModal = $('.modal-body')
   let dataProduct = elementName.parentElement.parentElement.getAttribute('data-product')
   let product = data.filter(element => {
     return element.id == dataProduct
   })
-
-  
   let productItem = product[0]
   let html = ``
   if(productItem.nsx === 'perfume') {
     html =  `
+   <div class="box-detail__item row" data-product=${productItem.id}>
     <div class="box-detail__img col-6">
     <div class="box-detail__controls">
         <button class="box-detail__control bg-color" id="box-detail__control--prev">
@@ -534,7 +552,8 @@ function renderModal (data,elementName) {
             <i class="fa-solid fa-angle-right"></i>
         </button>
     </div>
-    <img src= ${productItem.productImg} alt="">
+    <img src= ${productItem.productImg} alt="" class="visible">
+    <img src= ${productItem.productImgHover} alt="" class="hidden">
   </div>
   <div class="box-detail__detail col-6">
     <h2 class="box-detail__name">
@@ -565,6 +584,7 @@ function renderModal (data,elementName) {
         <div class="box-detail__count">
             <button class="box-detail__btn" id="box-detail__btn--next"><i class="fa-solid fa-plus"></i></button>
             <span class="box-detail__amount">1</span>
+            <span class="box-detail__max hidden">${productItem.count}</span>
             <button class="box-detail__btn" id="box-detail__btn--prev">
                 <i class="fa-solid fa-minus"></i>
             </button>
@@ -575,9 +595,11 @@ function renderModal (data,elementName) {
         <i class="fa-solid fa-angles-right"></i>
     </button>
   </div>
+  </div> 
     `
   }else if(productItem.nsx === 'jewelry'){
     html =  `
+    <div class="box-detail__item row" data-product=${productItem.id}>
     <div class="box-detail__img col-6">
     <div class="box-detail__controls">
         <button class="box-detail__control bg-color" id="box-detail__control--prev">
@@ -588,7 +610,8 @@ function renderModal (data,elementName) {
             <i class="fa-solid fa-angle-right"></i>
         </button>
     </div>
-    <img src= ${productItem.productImg} alt="">
+    <img src= ${productItem.productImg} alt="" class="visible">
+    <img src= ${productItem.productImgHover} alt="" class="hidden">
   </div>
   <div class="box-detail__detail col-6">
     <h2 class="box-detail__name">
@@ -602,6 +625,7 @@ function renderModal (data,elementName) {
         <div class="box-detail__count">
             <button class="box-detail__btn" id="box-detail__btn--next"><i class="fa-solid fa-plus"></i></button>
             <span class="box-detail__amount">1</span>
+            <span class="box-detail__max hidden">${productItem.count}</span>
             <button class="box-detail__btn" id="box-detail__btn--prev">
                 <i class="fa-solid fa-minus"></i>
             </button>
@@ -612,9 +636,11 @@ function renderModal (data,elementName) {
         <i class="fa-solid fa-angles-right"></i>
     </button>
   </div>
+  </div>
     `
   }else if(productItem.productSale === ''){
     html =  `
+    <div class="box-detail__item row" data-product=${productItem.id}>
     <div class="box-detail__img col-6">
     <div class="box-detail__controls">
         <button class="box-detail__control bg-color" id="box-detail__control--prev">
@@ -625,7 +651,8 @@ function renderModal (data,elementName) {
             <i class="fa-solid fa-angle-right"></i>
         </button>
     </div>
-    <img src= ${productItem.productImg} alt="">
+    <img src= ${productItem.productImg} alt="" class="visible">
+    <img src= ${productItem.productImgHover} alt="" class="hidden">
   </div>
   <div class="box-detail__detail col-6">
     <h2 class="box-detail__name">
@@ -664,6 +691,7 @@ function renderModal (data,elementName) {
         <div class="box-detail__count">
             <button class="box-detail__btn" id="box-detail__btn--next"><i class="fa-solid fa-plus"></i></button>
             <span class="box-detail__amount">1</span>
+            <span class="box-detail__max hidden">${productItem.count}</span>
             <button class="box-detail__btn" id="box-detail__btn--prev">
                 <i class="fa-solid fa-minus"></i>
             </button>
@@ -674,9 +702,11 @@ function renderModal (data,elementName) {
         <i class="fa-solid fa-angles-right"></i>
     </button>
   </div>
+  </div>
     `
   }else {
     html =  `
+    <div class="box-detail__item row" data-product=${productItem.id}>
     <div class="box-detail__img col-6">
     <div class="box-detail__controls">
         <button class="box-detail__control bg-color" id="box-detail__control--prev">
@@ -687,7 +717,8 @@ function renderModal (data,elementName) {
             <i class="fa-solid fa-angle-right"></i>
         </button>
     </div>
-    <img src= ${productItem.productImg} alt="">
+    <img src= ${productItem.productImg} alt="" class="visible">
+    <img src= ${productItem.productImgHover} alt="" class="hidden">
   </div>
   <div class="box-detail__detail col-6">
     <h2 class="box-detail__name">
@@ -727,6 +758,7 @@ function renderModal (data,elementName) {
         <div class="box-detail__count">
             <button class="box-detail__btn" id="box-detail__btn--next"><i class="fa-solid fa-plus"></i></button>
             <span class="box-detail__amount">1</span>
+            <span class="box-detail__max hidden">${productItem.count}</span>
             <button class="box-detail__btn" id="box-detail__btn--prev">
                 <i class="fa-solid fa-minus"></i>
             </button>
@@ -737,10 +769,28 @@ function renderModal (data,elementName) {
         <i class="fa-solid fa-angles-right"></i>
     </button>
   </div>
+  </div>
     `
   }
   elementModal.innerHTML = html
-  changeColor(btnColorBlack)
+  
+  let btnColorActive = $('.color__item--active')
+  let codeColor = btnColorActive.getAttribute('code-color')
+  let bgColors = $$('.bg-color')
+  let textColors = $$('.text-color')
+  let bgColorOp = $$('.bg-color-op')
+  bgColors.forEach(element => {
+      element.setAttribute('style','background-color: rgba(' + codeColor + ',1)!important')
+  })
+  textColors.forEach(element => {
+      element.setAttribute('style','color: rgba(' + codeColor + ',1)!important')
+  })
+
+  bgColorOp.forEach(element => {
+      element.setAttribute('style','background-color: rgba(' + codeColor + ',0.8)!important')
+  })
+
+  handleEventsModal ()
 }
 function changeColor (colorName) {
   let bgColors = $$('.bg-color')
@@ -761,39 +811,13 @@ function changeColor (colorName) {
   textColorAfters.forEach(element => {
       element.setAttribute('style','background-color: rgba(' + code + ',1)!important')
   })
-//   line nav
-let lineNav = $('.header__navLine')
-let navItems = $$('.header__navitem')
-let arrWidthNavItem = []
-let positionLeft = 0
-navItems.forEach((element,index) => {
- arrWidthNavItem.push(element.clientWidth*index)
- element.onmouseover = function () {
-  positionLeft = arrWidthNavItem[index] + 12
-  lineNav.setAttribute('style','left:'+ positionLeft + 'px')
-  // lineNav.setAttribute('style','width:'+ arrWidthNavItem[1] + 'px')
-  }
-})
-
+  let color = $$('.color')
+  color.forEach(element => {
+    element.classList.remove('color__item--active')
+  })
+  colorName.classList.add('color__item--active')
 }
-function start (data) {
-    //render product sale
-    renderProductSale(filterProductSale(data))
-    // default product type
-    renderProductType(filterProductType(data,'adidas'))
-    // default btn type
-    handleActiveType('adidas')
-    //render accessory perfume
-    renderAccessory(filterProductType(data,'perfume'),listPerfume,0)
-    //render accessory jewelry
-    renderAccessory(filterProductType(data,'jewelry'),listJewelry,0)
-    // lang nghe va xu ly events
-    handleEvents(data)
-    //color default
-    changeColor(btnColorBlack) 
 
-}
-getApi(productApi,start)
 
 //-----------------
 // start

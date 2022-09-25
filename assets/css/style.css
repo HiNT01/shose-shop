@@ -49,7 +49,7 @@
 }
 #btn__next--hover,
 #btn__productNext--hover,
-#btn__jewelrytNext--hover,
+#btn__jewelryNext--hover,
 #btn__perfumeNext--hover {
     height: 0px;
     right: 10px;
@@ -58,7 +58,7 @@
 }
 #btn__prev--hover,
 #btn__productPrev--hover,
-#btn__jewelrytPrev--hover,
+#btn__jewelryPrev--hover,
 #btn__perfumePrev--hover {
     height: 0px;
     left: 10px;
@@ -76,13 +76,13 @@
 }
 #btn__next,
 #btn__productNext,
-#btn__jewelrytNext,
+#btn__jewelryNext,
 #btn__perfumeNext {
     right: 10px;
 }
 #btn__prev,
 #btn__productPrev,
-#btn__jewelrytPrev,
+#btn__jewelryPrev,
 #btn__perfumePrev {
     left: 10px;
 }
@@ -108,7 +108,7 @@
     }
 }
 
-/* product sale */
+/* product */
 .product {
     margin-top: 30px;
     padding: 15px;
@@ -137,7 +137,6 @@
 .product__type > img {
     width: 20px;
     height: 20px;
-
 }
 .product__countdown {
     list-style: none;
@@ -363,7 +362,7 @@
     display:flex;
     justify-content : space-between;
     align-items: center;
-
+    margin-bottom: 10px;
 }
 .sneaker__types {
     display:flex;

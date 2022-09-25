@@ -709,6 +709,14 @@
     {
       "img_id": 2,
       "src": "./assets/img/slider2.webp"
+    },
+    {
+      "img_id": 3,
+      "src": "./assets/img/slider2.webp"
+    },
+    {
+      "img_id": 4,
+      "src": "./assets/img/slider1.webp"
     }
   ]
 }

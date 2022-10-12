@@ -1,0 +1,116 @@
+/* content */
+.content {
+    background-color: #dbdbdb;
+    height: auto;
+    padding:10px 0px;
+} 
+.content__wrapper {
+    display: flex;
+    gap: 0px 20px;
+}
+.content__right {
+    width: calc(70% - 10px);
+}
+.content__title {
+    font-size: 30px;
+    text-transform: capitalize;
+}
+.news {
+    width: 100%;
+    display: flex;
+    gap:20px 10px;
+    flex-wrap: wrap;
+}
+.news__item {
+    width: calc(33.33% - 10px);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color:#000;
+   
+}
+.news__item:hover {
+    color:#000;
+}
+.news__img {
+    width: 100%;
+    overflow: hidden;
+    height:220px;
+    position: relative;
+}
+/* .news__img::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    background-color: rgba(0,0,0,0.4);
+    visibility: hidden;
+} */
+.news__img > img {
+   height:100%;
+   object-fit: cover;
+   transition: all linear .3s;
+}
+.news__img:hover  img{
+    transform: scale(1.1);
+}
+/* .news__img:hover .news__img::after {
+    visibility: visible;
+} */
+.news__info {
+    width: 95%;
+    margin: auto;
+    background-color: #fff;
+    padding:5px 10px;
+    position: relative;
+    top: -30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 4;
+}
+.news__name {
+    font-size: 16px;
+    text-transform: capitalize;
+}
+.news__des {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dbdbdb;
+}
+.news__bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.news__btn {
+    border:none;
+    padding:4px 8px;
+    text-transform: capitalize;
+    background-color: #fff;
+    font-size: 14px;
+}
+.news__btn:hover {
+    color:blue;
+}
+/*  */
+.accordion {
+    width: calc(30% - 10px);
+}
+.accordion-item .news {
+    flex-direction: column;
+}
+.accordion-item .news__item {
+    width: 100%;
+    flex-direction: row;
+    gap: 10px 10px;
+}
+.accordion-item .news__img {
+    width: calc(30% - 5px);
+    height: 100px;
+}
+.accordion-item .news__info {
+    width: calc(70% - 5px);
+} 

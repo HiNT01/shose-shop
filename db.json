@@ -281,7 +281,7 @@
       "productCost": "590000000",
       "productSale": "",
       "productImg": "./assets/img/product/shoes/sh21.png",
-      "productImgHover": "./assets/img/product/shoes/sh21-h.png",
+      "productImgHover": "./assets/img/product/shoes/sh21-h.jpg",
       "nsx" : "adidas",
       "count" :"5",
       "type" : 0
@@ -292,7 +292,7 @@
       "productCost": "3500000",
       "productSale": "",
       "productImg": "./assets/img/product/shoes/sh22.png",
-      "productImgHover": "./assets/img/product/shoes/sh22-h.png",
+      "productImgHover": "./assets/img/product/shoes/sh22-h.jpg",
       "nsx" : "adidas",
       "count" :"20",
       "type" : 0
@@ -303,7 +303,7 @@
       "productCost": "450000000",
       "productSale": "",
       "productImg": "./assets/img/product/shoes/sh23.png",
-      "productImgHover": "./assets/img/product/shoes/sh23-h.png",
+      "productImgHover": "./assets/img/product/shoes/sh23-h.jpg",
       "nsx" : "adidas",
       "count" :"5",
       "type" : 0
@@ -564,7 +564,7 @@
     {
       "id": 52,
       "productName": " Bộ vệ sinh trang sức dành riêng cho các sản phẩm Pandora ",
-      "productCost": "490000",
+      "productCost": "390000",
       "productSale": "",
       "productImg": "./assets/img/product/jewelry/je2.png",
       "productImgHover": "./assets/img/product/jewelry/je2-h.png",
@@ -608,7 +608,7 @@
     {
       "id": 56,
       "productName": "  Charm bạc mạ vàng hồng 14k hình Pandora Moments chiếc lá đính đá Cubic Zirconia nhiều màu  ",
-      "productCost": "1770000",
+      "productCost": "177000",
       "productSale": "",
       "productImg": "./assets/img/product/jewelry/je6.jpg",
       "productImgHover": "./assets/img/product/jewelry/je6.jpg",
@@ -619,7 +619,7 @@
     {
       "id": 57,
       "productName": "  Charm bạc Pandora Harry Potter gia tinh Dobby - Harry Potter  ",
-      "productCost": "954000",
+      "productCost": "49000",
       "productSale": "",
       "productImg": "./assets/img/product/jewelry/je7.jpg",
       "productImgHover": "./assets/img/product/jewelry/je7.jpg",

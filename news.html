@@ -20,7 +20,7 @@
     <meta property="og:image" content="./assets/img/hint.jpg">
     <!-- ///// -->
     <link rel="shortcut icon" href="./assets/img/hint.jpg" type="image/x-icon">
-    <title>My shop hint</title>
+    <title>Tin tức</title>
     <!-- css -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/font.css">
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/news.css">
     <link rel="stylesheet" href="./assets/css/reponsive.css">
 </head>
 <body>
@@ -129,109 +129,17 @@
         <span class="btn-back bg-color">
             <i class="fa-solid fa-angle-up"></i>
         </span>
-        <!-- box detail product -->
-        <!-- Button trigger modal -->
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                    <div class="modal-body row">
-                        <div class="box-detail__item row"></div>
-                        
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="nav__mobile ">
-            <button class="nav__mobile-close">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <ul class="nav__mobile-list">
-                <li class="nav__mobile-item">
-                    <a href="./index.html"  class="header__link text-color">
-                        trang chu
-                    </a>
-                </li>
-                <li class="nav__mobile-item header__parent-nav">
-                    <span class="header__link text-color">giày sneaker
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </span>
-                    <ul class="header__subNav">
-                        <li class="header__subnav-item">
-                            <a href="./product.html?adidas" class="header__link text-color">
-                                adidas
-                            </a>
-                        </li>
-                        <li class="header__subnav-item">
-                            <a href="./product.html?nike" class="header__link text-color">
-                                nike
-                            </a>
-                        </li>
-                        <li class="header__subnav-item">
-                            <a href="./product.html?gucci" class="header__link text-color">
-                                gucci
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav__mobile-item">
-                    <a href="./product.html?perfume"  class="header__link text-color">
-                        nuoc hoa
-                    </a>
-                </li>
-                <li class="nav__mobile-item">
-                    <a href="../product.html?jewelry"  class="header__link text-color">
-                        phu kien
-                    </a>
-                </li>
-                <!-- <li class="nav__mobile-item">
-                    <a href=""  class="header__link text-color">
-                        tin tuc
-                    </a>
-                </li> -->
-                <!-- <li class="nav__mobile-item">
-                    <a href=""  class="header__link text-color">
-                        huong dan
-                    </a>
-                </li> -->
-                <li class="nav__mobile-item">
-                    <a href="./contact.html"  class="header__link text-color">
-                        lien he
-                    </a>
-                </li>
-                <li class="nav__mobile-item">
-                    <a href="./login.html"  class="header__link text-color">
-                        dang nhap
-                    </a>
-                </li>
-                <li class="nav__mobile-item">
-                    <a href="./register.html"  class="header__link text-color">
-                        dang ky
-                    </a>
-                </li>
-               
-            </ul>
-             
-        </div>
-          
-      
         <!-- header -->
         <header>
             <div id="header" class="container-fluid bg-color">
                 <div class="header__wrapper container">
                     <div class="row">
                         <!-- logo web -->
-                        <a href="#" class="logo col col-lg-2 col-md-2 col-sx-5">
+                        <a href="#" class="logo col col-lg-2 col-md-2">
                             <img src="./assets/img/logo-scofield-while_2d1f4117bd8d4867acc370cb4b35e531.png" alt="logo">
                         </a>
                         <!-- form -->
-                        <div class="header__form col col-lg-6 col-md-5 col-sx-5">
+                        <div class="header__form col col-lg-6 col-md-6">
                             <form action="" method="post">
                                 <input type="text" name="key-search" id="input-search">
                                 <button class="header__btn bg-color">
@@ -240,40 +148,35 @@
                             </form>
                         </div>
                         <!--  -->
-                        <div class="header__icons col col-lg-4 col-md-5 ">
+                        <div class="header__icons col col-lg-4 col-md-4">
                             <div class="row">
-                                <!-- <button class="col col-lg-4 header__icon">
+                                <button class="col col-lg-4 header__icon">
                                     <div class="row">
                                         <i class="fa-solid fa-location-dot col col-lg-4"></i>
                                         <span class="col col-lg-8">hệ thống cửa hàng</span>
                                     </div>
-                                </button> -->
+                                </button>
                                 <!-- //// -->
-                                <a href="./login.html" class="col col-lg-6 header__icon">
+                                <button class="col col-lg-4 header__icon">
                                     <div class="row">
-                                        <i class="fa-solid fa-user col col-lg-2 col-md-2"></i>
-                                        <span class="col col-lg-10 col-md-10">đăng nhập<br>đăng ký</span>
+                                        <i class="fa-solid fa-user col col-lg-3"></i>
+                                        <span class="col col-lg-9">đăng nhập<br>đăng ký</span>
                                     </div>
-                                   
-                                </a>
+                                </button>
                                 <!-- ///// -->
-                                <a href="./cart.html" class="col col-lg-4 header__icon">
+                                <button class="col col-lg-4 header__icon">
                                     <div class="row">
-                                        <i class="fa-solid fa-cart-shopping col col-lg-6 col-md-2"></i>
-                                        <span class="col col-lg-8 col-md-10">giỏ hàng
+                                        <i class="fa-solid fa-cart-shopping col col-lg-4"></i>
+                                        <span class="col col-lg-8">giỏ hàng
     
                                         </span>
                                         <span class="header__count-product">0</span>
                                     </div>
-                                </a>
+                                </button>
                             </div>
                         </div>
                         <!-- /////// -->
-                        <div class="header__btnMobile">
-                            <button>
-                                <i class="fa-solid fa-bars"></i>
-                            </button>
-                        </div>
+    
                     </div>
                 </div>
             </div>
@@ -308,10 +211,10 @@
                         </ul>
                     </li>
                     <li class="header__navitem">
-                        <a href="./product.html?perfume" class="header__link text-color">nước hoa</a>
+                        <a href="#" class="header__link text-color">nước hoa</a>
                     </li>
                     <li class="header__navitem">
-                        <a href="./product.html?jewelry" class="header__link text-color">phụ kiện</a>
+                        <a href="#" class="header__link text-color">phụ kiện</a>
                     </li>
                     <!-- <li class="header__navitem">
                         <a href="#" class="header__link text-color">tin tức</a>
@@ -320,7 +223,7 @@
                         <a href="#" class="header__link text-color">hướng dẫn</a> -->
                     </li>
                     <li class="header__navitem">
-                        <a href="./contact.html" class="header__link text-color">liên hệ</a>
+                        <a href="#" class="header__link text-color">liên hệ</a>
                     </li>
                 </ul>
             </nav>
@@ -329,181 +232,269 @@
         <!-- content -->
         <div class="content container-fluid">
             <div class="content__wrapper container">
-                <!-- banner -->
-                <div class="banner">
-                    <div class="banner__wrapper">
-                        <div class="banner__action container">
-                            <div class="banner__btns">
-                                <button class="banner__btn" id="btn__next"><i class="fa-solid fa-angle-right"></i></button>
-                                <button class="banner__btn banner__btn--hover" id="btn__next--hover"><i
-                                        class="fa-solid fa-angle-right"></i></button>
-                                <button class="banner__btn" id="btn__prev"><i class="fa-solid fa-angle-left"></i></button>
-                                <button class="banner__btn banner__btn--hover" id="btn__prev--hover"><i
-                                        class="fa-solid fa-angle-left"></i></button>
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class="accordion-button content__filter-title" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
+                                aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                bài viết mới nhất
+                            </button>
+                            <div class="news">
+                                <a href="#" class="news__item">
+                                    <div class="news__img">
+                                        <img src="./assets/img/untitled_design__22__fb23feecd3a_6de29e794b704d25ab33dfa9de4bd05c_small.jpg" alt="">
+                                    </div>
+                                    <div class="news__info">
+                                        <h3 class="news__name"> 
+                                            Legit Check : Hướng Dẫn Cách Phân Biệt Air Jordan 1 'Volt
+                                        </h3>
+                                        <p class="news__des">
+                                            Bạn đang cố gắng tìm hiểu cách phân biệt đôi Air Jordan 1 phối
+                                        </p>
+                                        <div class="news__bottom">
+                                            <span class="news__date">
+                
+                                                <span>
+                                                    02/07/2022
+                                                </span>
+                                            </span>
+                                            <button class="news__btn">xem thêm</button>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="news__item">
+                                    <div class="news__img">
+                                        <img src="./assets/img/untitled_design__22__fb23feecd3a_6de29e794b704d25ab33dfa9de4bd05c_small.jpg" alt="">
+                                    </div>
+                                    <div class="news__info">
+                                        <h3 class="news__name"> 
+                                            Legit Check : Hướng Dẫn Cách Phân Biệt Air Jordan 1 'Volt
+                                        </h3>
+                                        <p class="news__des">
+                                            Bạn đang cố gắng tìm hiểu cách phân biệt đôi Air Jordan 1 phối
+                                        </p>
+                                        <div class="news__bottom">
+                                            <span class="news__date">
+                
+                                                <span>
+                                                    02/07/2022
+                                                </span>
+                                            </span>
+                                            <button class="news__btn">xem thêm</button>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="news__item">
+                                    <div class="news__img">
+                                        <img src="./assets/img/untitled_design__22__fb23feecd3a_6de29e794b704d25ab33dfa9de4bd05c_small.jpg" alt="">
+                                    </div>
+                                    <div class="news__info">
+                                        <h3 class="news__name"> 
+                                            Legit Check : Hướng Dẫn Cách Phân Biệt Air Jordan 1 'Volt
+                                        </h3>
+                                        <p class="news__des">
+                                            Bạn đang cố gắng tìm hiểu cách phân biệt đôi Air Jordan 1 phối
+                                        </p>
+                                        <div class="news__bottom">
+                                            <span class="news__date">
+                
+                                                <span>
+                                                    02/07/2022
+                                                </span>
+                                            </span>
+                                            <button class="news__btn">xem thêm</button>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="news__item">
+                                    <div class="news__img">
+                                        <img src="./assets/img/untitled_design__22__fb23feecd3a_6de29e794b704d25ab33dfa9de4bd05c_small.jpg" alt="">
+                                    </div>
+                                    <div class="news__info">
+                                        <h3 class="news__name"> 
+                                            Legit Check : Hướng Dẫn Cách Phân Biệt Air Jordan 1 'Volt
+                                        </h3>
+                                        <p class="news__des">
+                                            Bạn đang cố gắng tìm hiểu cách phân biệt đôi Air Jordan 1 phối
+                                        </p>
+                                        <div class="news__bottom">
+                                            <span class="news__date">
+                
+                                                <span>
+                                                    02/07/2022
+                                                </span>
+                                            </span>
+                                            <button class="news__btn">xem thêm</button>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="news__item">
+                                    <div class="news__img">
+                                        <img src="./assets/img/untitled_design__22__fb23feecd3a_6de29e794b704d25ab33dfa9de4bd05c_small.jpg" alt="">
+                                    </div>
+                                    <div class="news__info">
+                                        <h3 class="news__name"> 
+                                            Legit Check : Hướng Dẫn Cách Phân Biệt Air Jordan 1 'Volt
+                                        </h3>
+                                        <p class="news__des">
+                                            Bạn đang cố gắng tìm hiểu cách phân biệt đôi Air Jordan 1 phối
+                                        </p>
+                                        <div class="news__bottom">
+                                            <span class="news__date">
+                
+                                                <span>
+                                                    02/07/2022
+                                                </span>
+                                            </span>
+                                            <button class="news__btn">xem thêm</button>
+                                        </div>
+                                    </div>
+                                </a>
+                               </div>
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                            aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+                               
                             </div>
-                            <div class="banner__dots" id="dot">
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                            <button class="accordion-button content__filter-title collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo"
+                                aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                bài viết được xem nhiều nhất
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                            aria-labelledby="panelsStayOpen-headingTwo">
+                            <div class="accordion-body">
                                 
                             </div>
                         </div>
-                        <img src="" alt="slider" id="banner__img">
-        
                     </div>
+                   
                 </div>
-                <!-- end banner -->
-                <!-- product sale  -->
-                <div class="product bg-color">
-                    <div class="product__title">
-                        <h2 class="product__type">
-                            <img src="./assets/img/flash-sale_e6ba39a2380a4deaac1a7b4897f2d803.png" alt="">
-                            SẢN PHẨM KHUYẾN MÃI
-                        </h2>
-                        <ul class="product__countdown">
-                            <li><span id="day"></span>ngày</li>
-                            <li><span id="hours"></span>giờ</li>
-                            <li><span id="minute"></span>phút</li>
-                            <li><span id="second"></span>giây</li>
-                        </ul>
-                    </div>
-                    <div class="product__list">
-                        <div class="product__action container">
-                            <div class="product__btns">
-                                <button class="product__btn" id="btn__productNext"><i class="fa-solid fa-angle-right"></i></button>
-                                <button class="product__btn product__btn--hover" id="btn__productNext--hover"><i
-                                        class="fa-solid fa-angle-right"></i></button>
-                                <button class="product__btn" id="btn__productPrev"><i class="fa-solid fa-angle-left"></i></button>
-                                <button class="product__btn product__btn--hover" id="btn__productPrev--hover"><i
-                                        class="fa-solid fa-angle-left"></i></button>
-                            </div>
-                            <div class="product__dots" id="dot">
+                <div class="content__right">
+                    <h2 class="content__title">
+                        tin tức
+                    </h2>
+                   <div class="news">
+                    <a href="#" class="news__item">
+                        <div class="news__img">
+                            <img src="./assets/img/untitled_design__22__fb23feecd3a_6de29e794b704d25ab33dfa9de4bd05c_small.jpg" alt="">
+                        </div>
+                        <div class="news__info">
+                            <h3 class="news__name"> 
+                                Legit Check : Hướng Dẫn Cách Phân Biệt Air Jordan 1 'Volt
+                            </h3>
+                            <p class="news__des">
+                                Bạn đang cố gắng tìm hiểu cách phân biệt đôi Air Jordan 1 phối
+                            </p>
+                            <div class="news__bottom">
+                                <span class="news__date">
+    
+                                    <span>
+                                        02/07/2022
+                                    </span>
+                                </span>
+                                <button class="news__btn">xem thêm</button>
                             </div>
                         </div>
-                        <!--  -->
-                        <div class="product__items" id="product-sale">
-                          
-                        </div>
-                
-                    </div>
-                  
-                </div>
-                <!-- end product sale -->
-                <!-- sneaker --> 
-                <div class="sneaker">
-                     <div class="sneaker__top">
-                        <h2 class="product__type product__type--black">
-                            GIÀY SNEAKER
-                        </h2>
-                        <ul class="sneaker__types">
-                            <li class="sneaker__type">
-                                <button class="sneaker__type-item" id="type-adidas">giày adidas</button>
-                            </li>
-                            <li class="sneaker__type">
-                                <button class="sneaker__type-item" id="type-nike">giày nike</button>
-                            </li>
-                            <li class="sneaker__type">
-                                <button class="sneaker__type-item" id="type-gucci">giày gucci</button>
-                            </li>
-                        </ul>
-                     </div>
-                     <!--  -->
-                     <div class="product__items product__items--nopadding " id="product-type">
-                       
-                    </div>
-                    <a href="" class="product__btnAll">
-                        Xem tất cả
-                        <i class="fa-solid fa-angles-right"></i>
                     </a>
+                    <a href="#" class="news__item">
+                        <div class="news__img">
+                            <img src="./assets/img/untitled_design__22__fb23feecd3a_6de29e794b704d25ab33dfa9de4bd05c_small.jpg" alt="">
+                        </div>
+                        <div class="news__info">
+                            <h3 class="news__name"> 
+                                Legit Check : Hướng Dẫn Cách Phân Biệt Air Jordan 1 'Volt
+                            </h3>
+                            <p class="news__des">
+                                Bạn đang cố gắng tìm hiểu cách phân biệt đôi Air Jordan 1 phối
+                            </p>
+                            <div class="news__bottom">
+                                <span class="news__date">
+    
+                                    <span>
+                                        02/07/2022
+                                    </span>
+                                </span>
+                                <button class="news__btn">xem thêm</button>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="news__item">
+                        <div class="news__img">
+                            <img src="./assets/img/untitled_design__22__fb23feecd3a_6de29e794b704d25ab33dfa9de4bd05c_small.jpg" alt="">
+                        </div>
+                        <div class="news__info">
+                            <h3 class="news__name"> 
+                                Legit Check : Hướng Dẫn Cách Phân Biệt Air Jordan 1 'Volt
+                            </h3>
+                            <p class="news__des">
+                                Bạn đang cố gắng tìm hiểu cách phân biệt đôi Air Jordan 1 phối
+                            </p>
+                            <div class="news__bottom">
+                                <span class="news__date">
+    
+                                    <span>
+                                        02/07/2022
+                                    </span>
+                                </span>
+                                <button class="news__btn">xem thêm</button>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="news__item">
+                        <div class="news__img">
+                            <img src="./assets/img/untitled_design__22__fb23feecd3a_6de29e794b704d25ab33dfa9de4bd05c_small.jpg" alt="">
+                        </div>
+                        <div class="news__info">
+                            <h3 class="news__name"> 
+                                Legit Check : Hướng Dẫn Cách Phân Biệt Air Jordan 1 'Volt
+                            </h3>
+                            <p class="news__des">
+                                Bạn đang cố gắng tìm hiểu cách phân biệt đôi Air Jordan 1 phối
+                            </p>
+                            <div class="news__bottom">
+                                <span class="news__date">
+    
+                                    <span>
+                                        02/07/2022
+                                    </span>
+                                </span>
+                                <button class="news__btn">xem thêm</button>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="news__item">
+                        <div class="news__img">
+                            <img src="./assets/img/untitled_design__22__fb23feecd3a_6de29e794b704d25ab33dfa9de4bd05c_small.jpg" alt="">
+                        </div>
+                        <div class="news__info">
+                            <h3 class="news__name"> 
+                                Legit Check : Hướng Dẫn Cách Phân Biệt Air Jordan 1 'Volt
+                            </h3>
+                            <p class="news__des">
+                                Bạn đang cố gắng tìm hiểu cách phân biệt đôi Air Jordan 1 phối
+                            </p>
+                            <div class="news__bottom">
+                                <span class="news__date">
+    
+                                    <span>
+                                        02/07/2022
+                                    </span>
+                                </span>
+                                <button class="news__btn">xem thêm</button>
+                            </div>
+                        </div>
+                    </a>
+                   </div>
                 </div>
-                <!-- sneaker -->
-                <!-- banner bottom -->
-                <div class="bannerBottom">
-                    <span class="bannerBottom__line"></span>
-                    <img src="./assets/img/banner-bottom.jpg" alt="">
-                </div>
-                <!-- end banner bottom -->
-                <!-- product accessory -->
-                <div class="accessory">
-                    <!-- perfume : nước hoa -->
-                    <div class="accessory__item">
-                        <div class="accessory__top">
-                            <h2 class="product__type product__type--black product__type--accessory text-color">
-                                nước hoa
-                            </h2>
-                            <a href="./product.html?perfume" class="product__btnAll">
-                                Xem tất cả
-                                <i class="fa-solid fa-angles-right"></i>
-                            </a>
-                        </div>
-                        <div class="accessory__bottom">
-                            <div class="accessory__left">
-                                <img src="./assets/img/perfurm_efca16ade3874d9b960a7179ffcc0071.jpg" alt="">
-                            </div>
-                            <div class="accessory__right product__list">
-                                <div class="product__action container">
-                                    <div class="product__btns">
-                                        <button class="product__btn" id="btn__perfumeNext">
-                                            <i class="fa-solid fa-angle-right"></i>
-                                        </button>
-                                        <button class="product__btn product__btn--hover" id="btn__perfumeNext--hover">
-                                            <i class="fa-solid fa-angle-right"></i>
-                                            </button>
-                                        <button class="product__btn" id="btn__perfumePrev">
-                                            <i class="fa-solid fa-angle-left"></i>
-                                        </button>
-                                        <button class="product__btn product__btn--hover" id="btn__perfumePrev--hover">
-                                            <i class="fa-solid fa-angle-left"></i>
-                                            </button>
-                                    </div>
-                                    <div class="product__dots" id="dotPerfume">
-                                    </div>
-                                </div>
-                                <div class="product__items product__item--accessory" id="perfume">
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  jewelry : trang sức-->
-                    <div class="accessory__item">
-                        <div class="accessory__top">
-                            <h2 class="product__type product__type--black product__type--accessory text-color">
-                                trang sức
-                            </h2>
-                            <a href="./product.html?jewelry" class="product__btnAll">
-                                Xem tất cả
-                                <i class="fa-solid fa-angles-right"></i>
-                            </a>
-                        </div>
-                        <div class="accessory__bottom">
-                            <div class="accessory__left">
-                                <img src="./assets/img/trangsucnew_d72fd9c4ca7047bf84e3af2e3d3e1f4d.jpg" alt="">
-                            </div>
-                            <div class="accessory__right product__list">
-                                <div class="product__action container">
-                                    <div class="product__btns">
-                                        <button class="product__btn" id="btn__jewelryNext">
-                                            <i class="fa-solid fa-angle-right"></i>
-                                        </button>
-                                        <button class="product__btn product__btn--hover" id="btn__jewelryNext--hover">
-                                            <i class="fa-solid fa-angle-right"></i>
-                                            </button>
-                                        <button class="product__btn" id="btn__jewelryPrev">
-                                            <i class="fa-solid fa-angle-left"></i>
-                                        </button>
-                                        <button class="product__btn product__btn--hover" id="btn__jewelryPrev--hover">
-                                            <i class="fa-solid fa-angle-left"></i>
-                                            </button>
-                                    </div>
-                                    <div class="product__dots" id="dotJewelry">
-                                    
-                                    </div>
-                                </div>
-                                <div class="product__items product__item--accessory" id="jewelry">
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
         <!-- end content -->
@@ -527,7 +518,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="footer__listsocial col col-lg-4 ">
+                        <div class="footer__listsocial col col-lg-4">
                             <ul class="socials  socials--horizontal ">
                                 <li class="social social--horizontal zalo">
                                     <a href="" class="social__link ">
@@ -566,7 +557,7 @@
                 <div class="footer__top container">
                     <div class="row">
                         <!-- //// -->
-                        <div class="col col-lg-4  not">
+                        <div class="col col-lg-4 not">
                             <h3 class="footer__title">giới thiệu</h3>
                             <ul class="footer__list">
                                 <li class="footer__item">
@@ -590,7 +581,7 @@
                             </ul>
                         </div>
                         <!-- //// -->
-                        <div class="col col-lg-4 ">
+                        <div class="col col-lg-4">
                             <h3 class="footer__title">chính sách</h3>
                             <ul class="footer__list">
                                 <li class="footer__item">
@@ -614,7 +605,7 @@
                             </ul>
                         </div>
                         <!-- //// -->
-                        <div class="col col-lg-4 ">
+                        <div class="col col-lg-4">
                             <h3 class="footer__title">hướng dẫn</h3>
                             <ul class="footer__list">
                                 <li class="footer__item">
@@ -637,5 +628,5 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./assets/js/main.js"></script>
-<script src="./assets/js/index.js"></script>
+<script src="./assets/js/news.js"></script>
 </html>

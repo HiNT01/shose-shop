@@ -21,6 +21,9 @@ const btnNikeType = $("#type-nike");
 const btnAdidasType = $("#type-adidas");
 const TIME_COUNT_DOWN = "TIME";
 let currentIdBanner = 0;
+let limitSale 
+let limitAccessory
+let limitType 
 const objTime = JSON.parse(localStorage.getItem(TIME_COUNT_DOWN));
 // get api
 function getApi(api, callback) {
@@ -58,7 +61,7 @@ let renderBanner = (data) => {
   elementImg.setAttribute("src", objBanner.src);
   elementDots.forEach((element) => {
     element.classList.remove("bg-color");
-    element.setAttribute("style", "background-color: yellow");
+    element.setAttribute("style", "background-color: rgba(0, 255, 255,0.5)");
   });
   elementDot.classList.add("bg-color");
   colorDefault();
@@ -156,8 +159,26 @@ const starBanner = (data) => {
 //------------
 getApi(bannerApi, starBanner);
 //-- product
-//render
+// reponsive 
+const setLimit = () => {
+  let widthWindow  = window.innerWidth
+  if(widthWindow > 992)  {
+    limitSale = 5
+    limitAccessory = 2
+    limitType = 10
+  }else if(widthWindow > 767) {
+    limitSale = 3
+    limitAccessory = 1
+    limitType = 8
+  } else if( widthWindow <= 767) {
+    limitSale = 2
+    limitAccessory = 1
+    limitType = 6
+  }
+}
+//render  product Accessory
 function renderAccessory(data, element, start) {
+  setLimit()
   currentIdAccessory = start;
   if (currentIdAccessory == data.length) {
     currentIdAccessory = 0;
@@ -166,7 +187,7 @@ function renderAccessory(data, element, start) {
   } else {
     currentIdAccessory;
   }
-  let max = currentIdAccessory + 2;
+  let max = currentIdAccessory + limitAccessory;
   let htmls = "";
   for (currentIdAccessory; currentIdAccessory < max; currentIdAccessory++) {
     let productItem = data[currentIdAccessory];
@@ -177,7 +198,7 @@ function renderAccessory(data, element, start) {
               </button>
                <img src=${productItem.productImg} alt="" id="img-visible">
                <img src=${productItem.productImgHover} alt=""  id="img-hidden">
-               <button class="product__btnAdds">
+               <button type="button" class="btn btn-primary product__btnAdds" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   <span class="product__btnAdd">
                    <i class="fa-sharp fa-solid fa-cart-plus"></i>
                   </span>
@@ -211,7 +232,7 @@ function renderAccessory(data, element, start) {
                <!-- price -->
                <div class="product__prices">
                    <div class="product__price product__price--sale">
-                   ${productItem.productCost} đ
+                   ${Number(productItem.productCost).toLocaleString('vi', {style : 'currency', currency : 'VND'})}
                    </div>
                </div>
            </div>
@@ -223,19 +244,20 @@ function renderAccessory(data, element, start) {
 }
 // render product type
 function renderProductType(data) {
+  setLimit()
   currentIdType = 0;
-  let max = currentIdType + 10;
+  let max = currentIdType + limitType;
   let htmls = "";
   for (currentIdType; currentIdType < max; currentIdType++) {
     let productItem = data[currentIdType];
-    htmls += ` <div href="#" class="product__item" data-product = ${productItem.id} >
+    htmls += ` <div  class="product__item" data-product = ${productItem.id} >
              <div class="product__itemImg">
              <button type="button" class="btn btn-primary btn-search-hidden" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
              <i class="fa-solid fa-magnifying-glass "></i>
                 </button>
                  <img src=${productItem.productImg} alt="" id="img-visible">
                 <img src=${productItem.productImgHover} alt=""  id="img-hidden">
-                 <button class="product__btnAdds">
+                 <button type="button" class="btn btn-primary product__btnAdds" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     <span class="product__btnAdd">
                      <i class="fa-sharp fa-solid fa-cart-plus"></i>
                     </span>
@@ -244,9 +266,12 @@ function renderProductType(data) {
              </div>
              <div class="product__detail">
                  <!-- name -->
+                 <a href="./detail.html?data=${productItem.id}">
                  <h3 class="product__name">
                  ${productItem.productName}
                  </h3>
+                 </a>
+                
                  <!-- star -->
                  <ul class="product__evaluates">
                      <li class="product__evaluate">
@@ -269,7 +294,7 @@ function renderProductType(data) {
                  <!-- price -->
                  <div class="product__prices">
                      <div class="product__price product__price--sale">
-                     ${productItem.productCost} đ
+                     ${Number(productItem.productCost).toLocaleString('vi', {style : 'currency', currency : 'VND'})}
                      </div>
                  </div>
              </div>
@@ -279,20 +304,21 @@ function renderProductType(data) {
 }
 //render product sale
 function renderProductSale(data) {
+  setLimit()
   if (currentId >= data.length) {
     currentId = 0;
   } else if (currentId < -1) {
-    currentId = data.length - limit;
+    currentId = data.length - limitSale;
   } else {
     currentId;
   }
 
-  let max = currentId + limit;
+  let max = currentId + limitSale;
   let htmls = "";
   for (currentId; currentId < max; currentId++) {
     let productItem = data[currentId];
 
-    htmls += ` <div href="#" class="product__item" data-product =${productItem.id}>
+    htmls += ` <div  class="product__item" data-product =${productItem.id}>
            <div class="product__itemImg">
                <span class="product__sale">
                11%
@@ -302,7 +328,7 @@ function renderProductSale(data) {
               </button>
                <img src=${productItem.productImg} alt="" id="img-visible">
               <img src=${productItem.productImgHover} alt=""  id="img-hidden">
-               <button class="product__btnAdds">
+               <button type="button" class="btn btn-primary product__btnAdds" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   <span class="product__btnAdd">
                    <i class="fa-sharp fa-solid fa-cart-plus"></i>
                   </span>
@@ -311,9 +337,12 @@ function renderProductSale(data) {
            </div>
            <div class="product__detail">
                <!-- name -->
+               <a href="./detail.html?data=${productItem.id}">
                <h3 class="product__name">
                ${productItem.productName}
                </h3>
+               </a>
+              
                <!-- star -->
                <ul class="product__evaluates">
                    <li class="product__evaluate">
@@ -336,10 +365,10 @@ function renderProductSale(data) {
                <!-- price -->
                <div class="product__prices">
                    <div class="product__price product__price--sale">
-                   ${productItem.productSale} đ
+                   ${Number(productItem.productSale).toLocaleString('vi', {style : 'currency', currency : 'VND'})}
                    </div>
                    <div class="product__price product__price--cost">
-                   ${productItem.productCost} đ
+                   ${Number(productItem.productCost).toLocaleString('vi', {style : 'currency', currency : 'VND'})}
                    </div>
                </div>
            </div>
@@ -362,7 +391,15 @@ function filterProductType(data, type) {
   return arrProducts;
 }
 //modal
+
 function handleEventsModal() {
+  //inner size
+  const innerSize = () => {
+    let size = $('.box-detail__sizeName')
+    let sizeValue = $('.box-detail__sizeBtn.active').innerText
+    size.innerHTML = `kích thước :${sizeValue}`
+  }
+  innerSize()
   // control img
   let btnNext = $("#box-detail__control--next");
   let btnPrev = $("#box-detail__control--prev");
@@ -382,7 +419,7 @@ function handleEventsModal() {
     productImgHover.classList.add("visible");
     productImg.classList.remove("visible");
   };
-  //count product
+  //control product
   let btnPlus = $("#box-detail__btn--next");
   let btnMinus = $("#box-detail__btn--prev");
 
@@ -401,12 +438,31 @@ function handleEventsModal() {
     resultNumber = resultNumber < 1 ? 1 : resultNumber;
     result.innerText = resultNumber;
   };
+  //check size
+  let listSizes = $$('.box-detail__sizeBtn')
+  listSizes.forEach(item => {
+    item.onclick = () => {
+      listSizes.forEach(element => {
+        element.classList.add('bg-color')
+        element.classList.remove('active')
+      })
+      item.classList.remove('bg-color')
+      item.classList.add('active')
+      innerSize()
+    }
+  })
 }
 function handleModal(data) {
   let btnSearchHiddens = $$(".btn-search-hidden");
+  let btnAdds = $$('.product__btnAdds')
   btnSearchHiddens.forEach((element) => {
     element.onclick = function () {
       renderModal(data, element);
+    };
+  });
+  btnAdds.forEach((item) => {
+    item.onclick = function () {
+      renderModal(data, item);
     };
   });
 }
@@ -440,13 +496,13 @@ function renderModal(data, elementName) {
         ${productItem.productName}
         </h2>
         <div class="box-detail__price">
-            <span class="box-detail__sale">${productItem.productCost}₫</span>
+            <span class="box-detail__sale">${Number(productItem.productCost).toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
         </div>
         <div class="box-detail__size">
-            <span class="box-detail__sizeName">Kích thước: 20</span>
+            <span class="box-detail__sizeName"></span>
             <ul class="box-detail__listSize ">
                 <li class="box-detail__sizeItem">
-                    <button class="box-detail__sizeBtn bg-color">30ml</button>
+                    <button class="box-detail__sizeBtn active bg-color">30ml</button>
                 </li>
                 <li class="box-detail__sizeItem">
                     <button class="box-detail__sizeBtn bg-color">50ml</button>
@@ -471,9 +527,9 @@ function renderModal(data, elementName) {
             </div>
             <button class="box-detail__add bg-color">thêm vào giỏ</button>
         </div>
-        <button class="box-detail__detailAll bg-color">xem chi tiết
+        <a href="./detail.html?data=${productItem.id}" class="box-detail__detailAll bg-color">xem chi tiết
             <i class="fa-solid fa-angles-right"></i>
-        </button>
+        </a>
       </div>
       </div> 
         `;
@@ -498,7 +554,7 @@ function renderModal(data, elementName) {
         ${productItem.productName}
         </h2>
         <div class="box-detail__price">
-            <span class="box-detail__sale">${productItem.productCost}₫</span>
+            <span class="box-detail__sale">${Number(productItem.productCost).toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
         </div>
         
         <div class="box-detail__btns">
@@ -512,9 +568,9 @@ function renderModal(data, elementName) {
             </div>
             <button class="box-detail__add bg-color">thêm vào giỏ</button>
         </div>
-        <button class="box-detail__detailAll bg-color">xem chi tiết
-            <i class="fa-solid fa-angles-right"></i>
-        </button>
+        <a href="./detail.html?data=${productItem.id}" class="box-detail__detailAll bg-color">xem chi tiết
+        <i class="fa-solid fa-angles-right"></i>
+    </a>
       </div>
       </div>
         `;
@@ -539,13 +595,13 @@ function renderModal(data, elementName) {
         ${productItem.productName}
         </h2>
         <div class="box-detail__price">
-            <span class="box-detail__sale">${productItem.productCost}₫</span>
+            <span class="box-detail__sale">${ Number(productItem.productCost).toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
         </div>
         <div class="box-detail__size">
-            <span class="box-detail__sizeName">Kích thước: 20</span>
+            <span class="box-detail__sizeName"></span>
             <ul class="box-detail__listSize ">
                 <li class="box-detail__sizeItem">
-                    <button class="box-detail__sizeBtn bg-color">38</button>
+                    <button class="box-detail__sizeBtn active bg-color">38</button>
                 </li>
                 <li class="box-detail__sizeItem">
                     <button class="box-detail__sizeBtn bg-color">39</button>
@@ -578,9 +634,9 @@ function renderModal(data, elementName) {
             </div>
             <button class="box-detail__add bg-color">thêm vào giỏ</button>
         </div>
-        <button class="box-detail__detailAll bg-color">xem chi tiết
+        <a href="./detail.html?data=${productItem.id}" class="box-detail__detailAll bg-color">xem chi tiết
             <i class="fa-solid fa-angles-right"></i>
-        </button>
+        </a>
       </div>
       </div>
         `;
@@ -605,14 +661,14 @@ function renderModal(data, elementName) {
         ${productItem.productName}
         </h2>
         <div class="box-detail__price">
-            <span class="box-detail__sale"> ${productItem.productSale}₫</span>
-            <span class="box-detail__cost">${productItem.productCost}₫</span>
+            <span class="box-detail__sale"> ${ Number(productItem.productSale).toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
+            <span class="box-detail__cost">${ Number(productItem.productCost).toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
         </div>
         <div class="box-detail__size">
             <span class="box-detail__sizeName">Kích thước: 20</span>
             <ul class="box-detail__listSize ">
                 <li class="box-detail__sizeItem">
-                    <button class="box-detail__sizeBtn bg-color">38</button>
+                    <button class="box-detail__sizeBtn active bg-color">38</button>
                 </li>
                 <li class="box-detail__sizeItem">
                     <button class="box-detail__sizeBtn bg-color">39</button>
@@ -645,9 +701,9 @@ function renderModal(data, elementName) {
             </div>
             <button class="box-detail__add bg-color">thêm vào giỏ</button>
         </div>
-        <button class="box-detail__detailAll bg-color">xem chi tiết
+        <a href="./detail.html?data=${productItem.id}" class="box-detail__detailAll bg-color">xem chi tiết
             <i class="fa-solid fa-angles-right"></i>
-        </button>
+        </a>
       </div>
       </div>
         `;
@@ -662,20 +718,19 @@ function renderModal(data, elementName) {
   bgColors.forEach((element) => {
     element.setAttribute(
       "style",
-      "background-color: rgba(" + codeColor + ",1)!important"
+      "background-color: rgba(" + codeColor + ",1)"
     );
   });
   textColors.forEach((element) => {
-    element.setAttribute("style", "color: rgba(" + codeColor + ",1)!important");
+    element.setAttribute("style", "color: rgba(" + codeColor + ",1)");
   });
 
   bgColorOp.forEach((element) => {
     element.setAttribute(
       "style",
-      "background-color: rgba(" + codeColor + ",0.8)!important"
+      "background-color: rgba(" + codeColor + ",0.8)"
     );
   });
-
   handleEventsModal();
 }
 //product sale
@@ -683,15 +738,15 @@ function nextProductSale(data) {
   btnNextProductSale.onclick = function () {
     currentId++;
     renderProductSale(filterProductSale(data));
-    handleModel(data);
+    handleModal(data);
   };
 }
 function prevProductSale(data) {
   btnPrevProductSale.onclick = function () {
-    currentId -= limit * 2 - 1;
+    currentId -= limitSale * 2 - 1;
 
     renderProductSale(filterProductSale(data));
-    handleModel(data);
+    handleModal(data);
   };
 }
 // product type
@@ -700,6 +755,8 @@ function handleActiveType(type) {
   btns.forEach((element) => {
     element.classList.remove("sneaker__type-item--active");
   });
+  let elementLink = $('.product__btnAll')
+  elementLink.setAttribute('href','./product.html?' + type)
   switch (type) {
     case "adidas":
       btnAdidasType.classList.add("sneaker__type-item--active");
@@ -716,20 +773,25 @@ let handleProductType = (data) => {
   btnNikeType.onclick = () => {
     renderProductType(filterProductType(data, "nike"));
     handleActiveType("nike");
+    handleModal(data);
   };
   btnGucciType.onclick = () => {
     renderProductType(filterProductType(data, "gucci"));
     handleActiveType("gucci");
+    handleModal(data);
   };
   btnAdidasType.onclick = () => {
     renderProductType(filterProductType(data, "adidas"));
     handleActiveType("adidas");
+    handleModal(data);
   };
 };
 // accessory
 function handleDotAccessory(data, accessory, start) {
+  setLimit()
   let length = data.length;
-  let countDot = length / 2;
+  let countDot = length / limitAccessory;
+  console.log(countDot)
   let html = ``;
   for (let i = 0; i < countDot; i++) {
     html += ` <button class="banner__dot"></button>`;
@@ -739,10 +801,10 @@ function handleDotAccessory(data, accessory, start) {
     $("#dotPerfume").innerHTML = html;
     let dots = $$("#dotPerfume .banner__dot");
     dots.forEach((element) => {
-      element.classList.remove("color--black");
+      element.classList.remove("bg-color");
     });
-    let numberDot = Math.floor(start / 2 + 1);
-    if (numberDot > 5) {
+    let numberDot = Math.floor(start / limitAccessory + 1);
+    if (numberDot > countDot) {
       numberDot = 1;
     } else if (numberDot < 1) {
       numberDot = countDot;
@@ -752,6 +814,7 @@ function handleDotAccessory(data, accessory, start) {
       "#dotPerfume .banner__dot:nth-child(" + numberDot + ")"
     );
     elementActive.classList.add("bg-color");
+    colorDefault()
   } else {
     //----------2
     $("#dotJewelry").innerHTML = html;
@@ -769,7 +832,9 @@ function handleDotAccessory(data, accessory, start) {
     let elementActive = $(
       "#dotJewelry .banner__dot:nth-child(" + numberDot + ")"
     );
-    elementActive.classList.add("color--black");
+    
+    elementActive.classList.add("bg-color");
+    colorDefault()
   }
 }
 let handleAccessory = (data) => {
@@ -781,13 +846,13 @@ let handleAccessory = (data) => {
       listJewelry,
       currentIdAccessory
     );
-    handleModel(data);
+    handleModal(data);
   };
   // btn prev jewelry
   $("#btn__jewelryPrev--hover").onclick = function () {
     let start = currentIdAccessory - 3;
     renderAccessory(filterProductType(data, "jewelry"), listJewelry, start);
-    handleModel(data);
+    handleModal(data);
   };
   // btn next perfume
   $("#btn__perfumeNext--hover").onclick = function () {
@@ -797,17 +862,19 @@ let handleAccessory = (data) => {
       listPerfume,
       currentIdAccessory
     );
-    handleModel(data);
+    handleModal(data);
   };
   // btn prev perfume
   $("#btn__perfumePrev--hover").onclick = function () {
     let start = currentIdAccessory - 3;
     renderAccessory(filterProductType(data, "perfume"), listPerfume, start);
-    handleModel(data);
+    handleModal(data);
   };
 };
+
 //----------
 function startIndex(data) {
+  setLimit()
   //count down
   countDown(objTime.day, objTime.hour, objTime.minute, objTime.second);
   //render product sale
@@ -838,5 +905,8 @@ function startIndex(data) {
   //
   handleModal(data);
 }
+
+handleLoading()
+
 getApi(productApi, startIndex);
-// ---hover btn product sale
+

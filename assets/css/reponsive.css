@@ -1,0 +1,188 @@
+@media only screen and (max-width: 992px) {
+
+    /* header nav */
+    .header__nav {
+        max-width: 100%;
+    }
+
+    .header__navitem.header__parent-nav .header__link>i {
+        margin-left: 8px;
+    }
+
+    .product__item {
+        width: calc((100% - 24px)/3);
+    }
+
+    .product__item--2 {
+        width: 100%;
+    }
+
+    .product__dots {
+        display: none;
+    }
+    .modal.show .modal-dialog {
+        max-width: 90%;
+        height : 70%;
+        margin-top: 30%;
+    }
+    .box-detail__listSize {
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .header__btnMobile {
+        display:block;
+    }
+    .list-color {
+        right: 3%;
+    }
+    /* header nav */
+    .logo {
+        width: 30%;
+    }
+    .header__form {
+        order: 3;
+    }
+    .header__nav {
+        max-width: 100%;
+    }
+    .header__navitem.header__parent-nav .header__link>i {
+        margin-left: 8px;
+    }
+    .header__subNav {
+        top: 30%;
+    }
+    .header__icons {
+        display: none;
+    }
+    nav {
+        display: none;
+    }
+    .product__prices {
+        flex-direction: column;
+    }
+    .product__item {
+        width: calc((100% - 12px) / 2);
+    }
+
+    .product__title {
+        flex-wrap: wrap;
+    }
+
+    .accessory__top {
+        flex-wrap: wrap;
+    }
+
+    .product__type {
+        width: 100%;
+        display: block;
+    }
+
+    .accessory__top .product__btnAll {
+        width: 100%;
+        margin-left: 35%;
+        margin-bottom: 15px;
+    }
+
+    .accessory__bottom {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .accessory__left {
+        width: 90%;
+    }
+
+    .accessory__right {
+        width: 100%;
+    }
+
+    .product__item--2 {
+        width: 100%;
+    }
+
+    .product__dots {
+        display: none;
+    }
+
+    .footer__form>.row {
+        flex-direction: column;
+    }
+
+    .footer__icon {
+        width: 30%;
+    }
+
+    .footer__form form input {
+        padding: 5px;
+    }
+
+    .footer__form form {
+        flex-wrap: wrap;
+        padding: 0px 20px;
+    }
+
+    .footer__form form>button {
+        width: 100%;
+        margin: auto;
+    }
+
+    .socials--horizontal {
+        flex-direction: row;
+        margin-top: 15px;
+        align-items: center;
+    }
+
+    .footer__title {
+        color: aqua;
+    }
+
+    .footer__top>.row {
+        flex-direction: column;
+    }
+    .modal-dialog {
+        margin: 20% auto;
+        height: 65%;
+        max-width: 80%;
+    }
+    .modal-content {
+        height: 100%;
+    }
+    .box-detail__item {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .box-detail__img {
+        width: 100%;
+        height: 170px;
+        overflow: hidden;
+    }
+    .box-detail__detail{
+        width: 100%;
+    }
+    .box-detail__listSize {
+        flex-wrap: wrap;
+        gap: 10px 10px;
+    }
+    .modal-body {
+        width:100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+   
+  }
+  @media only screen and (max-width: 767px) {
+    .contact__form {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .contact__info {
+        width: 100%;
+    }
+  }

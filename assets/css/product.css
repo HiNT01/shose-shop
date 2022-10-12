@@ -134,3 +134,136 @@
 .product__item.product__item--4 {
   width: calc(25% - 6px);
 }
+/* pagination */
+.pagination__list {
+  margin:10px;
+  list-style: none;
+  display: flex;
+}
+.pagination__btn {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding: 4px 8px;
+  text-transform:capitalize;
+  border:none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all linear 0.2s;
+  background-color: #fff;
+}
+.pagination__btn:hover {
+  transform:scale(1.2)
+} 
+.pagination__btn.disble:hover {
+  transform:scale(1)
+}
+.pagination__btn.disble {
+  color: #dbdbdb !important;
+  cursor:none;
+}
+.pagination__btn.active {
+  background:linear-gradient(45deg,#ff0076,#590fb7);
+}
+/* .pagination__btn.run {
+  color: blue;
+} */
+.pagination__page:first-child .pagination__btn{
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  color: blue;
+}
+.pagination__page:last-child .pagination__btn{
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  color: blue;
+}
+.btn__sort{
+  background-color: #000;
+  border: 1px solid #000;
+  width:45px;
+  height:45px;
+  color: #fff;
+  border-radius: 4px;
+  display: none;
+}
+.btn__sort > i {
+  font-size: 30px;
+}
+.sort__open {
+  display: block !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width:100%;
+  bottom: 0;
+  z-index: 999999;
+  animation: navMobileIn linear .3s 1 forwards;
+}
+.sort__open-out {
+  animation: navMobileOut linear .3s 1 forwards;
+}
+@keyframes navMobileIn {
+  from {
+     transform: translateX(-100%);
+     opacity: 0;
+  }
+  to {
+     transform: translateX(0);
+     opacity:1;
+  }
+}
+@keyframes navMobileOut {
+  from {
+     transform: translateX(0);
+     opacity:1;
+  }
+  to {
+     transform: translateX(-120%);
+     opacity: 0;
+  }
+}
+.sort__open::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #ffffff;
+}
+.btn__sort-close {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: transparent;
+  border: none;
+  color: #000;
+}
+.btn__sort-close > i {
+  font-size: 40px;
+}
+
+@media only screen and (max-width: 992px) {
+  .content__left {
+    display: none;
+  }
+  .content__right {
+    width:100%;
+  }
+  .product__item.product__item--4 {
+    width: calc(33% - 6px);
+  }
+  .sneaker__top{
+    align-items: flex-end;
+  }
+  .accordion {
+    margin-top: 70px;
+  }
+  .btn__sort {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px) {
+ 
+}

@@ -106,23 +106,23 @@ function changeColor(colorName) {
   bgColors.forEach((element) => {
     element.setAttribute(
       "style",
-      "background-color: rgba(" + code + ",1)!important"
+      "background-color: rgba(" + code + ",1)"
     );
   });
   textColors.forEach((element) => {
-    element.setAttribute("style", "color: rgba(" + code + ",1)!important");
+    element.setAttribute("style", "color: rgba(" + code + ",1)");
   });
 
   bgColorOp.forEach((element) => {
     element.setAttribute(
       "style",
-      "background-color: rgba(" + code + ",0.8)!important"
+      "background-color: rgba(" + code + ",0.8)"
     );
   });
   textColorAfters.forEach((element) => {
     element.setAttribute(
       "style",
-      "background-color: rgba(" + code + ",1)!important"
+      "background-color: rgba(" + code + ",1)"
     );
   });
   let color = $$(".color");
@@ -257,6 +257,46 @@ colorNameStt = colorNameStt ? colorNameStt : "black";
       break;
   }
 };
+let loading = ()=> {
+  $('body').classList.add('notScroll')
+  $('.loading').classList.remove('hidden')
+}
+let notLoading = ()=> {
+  $('body').classList.remove('notScroll')
+  $('.loading').classList.add('hidden')
+}
+const handleLoading = () => {
+    loading()
+    setInterval(notLoading,3000)
+}
+const handleNavMobile = () => {
+  let btnOp = $('.header__btnMobile button')
+  let menuMobile = $('.nav__mobile')
+  let btnCl = $('.nav__mobile-close')
+  btnOp.onclick = () => {
+    menuMobile.classList.add('nav__mobile-in')
+    menuMobile.classList.remove('nav__mobile-out')
+    menuMobile.setAttribute('style','top:' + window.pageYOffset +'px')
+    $('body').style.overflowY = 'hidden'
+  }
+  btnCl.onclick = () => {
+    menuMobile.classList.remove('nav__mobile-in')
+    menuMobile.classList.add('nav__mobile-out')
+    $('body').style.overflowY = 'visible'
+
+  }
+}
+const closeBtnModal = () => {
+  let btns = $$('.btn-close')
+  btns.forEach(it => {
+    it.onclick = () => {
+      let modal = $('.modal')
+      modal.classList.remove('show')
+      $('.modal-backdrop').classList.remove('show')
+      $('body').style.overflow = 'visible'
+    }
+  })
+}
 let startMain = () => {
   btnSocial();
   btnSttColor();
@@ -265,5 +305,7 @@ let startMain = () => {
   handleChangeColor();
   colorDefault();
   setInterval(insertCh, 200);
+  handleNavMobile()
+  // closeBtnModal()
 };
 startMain();

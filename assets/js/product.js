@@ -14,7 +14,8 @@ let eleCountProductGucci = $('#countGucci')
 let eleCountProductPerfume = $('#countPerfume')
 let eleCountProductJewelry = $('#countJewelry')
 let eleSe = $('#sort')
-
+let eleNavi = $('#pagination')
+let limitType
 // get api
 function getApi(api, callback) {
   fetch(api)
@@ -23,13 +24,32 @@ function getApi(api, callback) {
     })
     .then(callback);
 }
+const setLimit = () => {
+  let widthWindow  = window.innerWidth
+  if(widthWindow > 992)  {
+    limitSale = 5
+    limitAccessory = 2
+    limitType = 8
+  }else if(widthWindow > 767) {
+    limitSale = 4
+    limitAccessory = 1
+    limitType = 9
+  } else if( widthWindow <= 767) {
+    limitSale = 2
+    limitAccessory = 1
+    limitType = 6
+  }
+}
 // render product type
 function renderProductType(data) {
-  currentIdType = 0;
-  let max = currentIdType + 8;
+  setLimit()
+  limitType = data.length >= limitType  ? limitType : data.length
+  let max = currentIdType + limitType;
+  max = max > data.length ? data.length : max
   let htmls = "";
   for (currentIdType; currentIdType < max; currentIdType++) {
     let productItem = data[currentIdType];
+    
     htmls += ` <div href="#" class="product__item product__item--4" data-product = ${productItem.id} >
          <div class="product__itemImg">
          <button type="button" class="btn btn-primary btn-search-hidden" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
@@ -37,7 +57,8 @@ function renderProductType(data) {
             </button>
              <img src=${productItem.productImg} alt="" id="img-visible">
             <img src=${productItem.productImgHover} alt=""  id="img-hidden">
-             <button class="product__btnAdds">
+             <button  type="button" class="btn btn-primary product__btnAdds" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+             
                 <span class="product__btnAdd">
                  <i class="fa-sharp fa-solid fa-cart-plus"></i>
                 </span>
@@ -46,9 +67,11 @@ function renderProductType(data) {
          </div>
          <div class="product__detail">
              <!-- name -->
-             <h3 class="product__name">
-             ${productItem.productName}
-             </h3>
+             <a href="./detail.html?data=${productItem.id}">
+                 <h3 class="product__name">
+                 ${productItem.productName}
+                 </h3>
+                 </a>
              <!-- star -->
              <ul class="product__evaluates">
                  <li class="product__evaluate">
@@ -71,23 +94,40 @@ function renderProductType(data) {
              <!-- price -->
              <div class="product__prices">
                  <div class="product__price product__price--sale">
-                 ${productItem.productCost} đ
+                 ${Number(productItem.productCost).toLocaleString('vi', {style : 'currency', currency : 'VND'})}
                  </div>
              </div>
          </div>
      </div>`;
   }
   listProductType.innerHTML = htmls;
+  let totalPage = Math.ceil(data.length / limitType )
+  handleModal(data);
+  navigation(data,limitType,eleNavi)
+  playNavigation(data)
+  handlePageActive(max, limitType ,totalPage)
 }
 //filter
-function filterProductType(data, type) {
+function filterProductType(data, type,dk) {
   let arrProducts = data.filter((element) => {
-    return element.nsx === type;
+    if(dk) {
+      return element.nsx === type
+    }else {
+       return Number(element.productCost) <= type;
+    }
   });
   return arrProducts;
+  
 }
 //modal
 function handleEventsModal() {
+  //inner size
+  const innerSize = () => {
+    let size = $('.box-detail__sizeName')
+    let sizeValue = $('.box-detail__sizeBtn.active').innerText
+    size.innerHTML = `kích thước :${sizeValue}`
+  }
+  innerSize()
   // control img
   let btnNext = $("#box-detail__control--next");
   let btnPrev = $("#box-detail__control--prev");
@@ -107,7 +147,7 @@ function handleEventsModal() {
     productImgHover.classList.add("visible");
     productImg.classList.remove("visible");
   };
-  //count product
+  //control product
   let btnPlus = $("#box-detail__btn--next");
   let btnMinus = $("#box-detail__btn--prev");
 
@@ -126,12 +166,31 @@ function handleEventsModal() {
     resultNumber = resultNumber < 1 ? 1 : resultNumber;
     result.innerText = resultNumber;
   };
+  //check size
+  let listSizes = $$('.box-detail__sizeBtn')
+  listSizes.forEach(item => {
+    item.onclick = () => {
+      listSizes.forEach(element => {
+        element.classList.add('bg-color')
+        element.classList.remove('active')
+      })
+      item.classList.remove('bg-color')
+      item.classList.add('active')
+      innerSize()
+    }
+  })
 }
 function handleModal(data) {
   let btnSearchHiddens = $$(".btn-search-hidden");
+  let btnAdds = $$('.product__btnAdds')
   btnSearchHiddens.forEach((element) => {
     element.onclick = function () {
       renderModal(data, element);
+    };
+  });
+  btnAdds.forEach((item) => {
+    item.onclick = function () {
+      renderModal(data, item);
     };
   });
 }
@@ -165,13 +224,13 @@ function renderModal(data, elementName) {
         ${productItem.productName}
         </h2>
         <div class="box-detail__price">
-            <span class="box-detail__sale">${productItem.productCost}₫</span>
+            <span class="box-detail__sale">${Number(productItem.productCost).toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
         </div>
         <div class="box-detail__size">
-            <span class="box-detail__sizeName">Kích thước: 20</span>
+            <span class="box-detail__sizeName"></span>
             <ul class="box-detail__listSize ">
                 <li class="box-detail__sizeItem">
-                    <button class="box-detail__sizeBtn bg-color">30ml</button>
+                    <button class="box-detail__sizeBtn active bg-color">30ml</button>
                 </li>
                 <li class="box-detail__sizeItem">
                     <button class="box-detail__sizeBtn bg-color">50ml</button>
@@ -196,9 +255,9 @@ function renderModal(data, elementName) {
             </div>
             <button class="box-detail__add bg-color">thêm vào giỏ</button>
         </div>
-        <button class="box-detail__detailAll bg-color">xem chi tiết
+        <a href="./detail.html?data=${productItem.id}" class="box-detail__detailAll bg-color">xem chi tiết
             <i class="fa-solid fa-angles-right"></i>
-        </button>
+        </a>
       </div>
       </div> 
         `;
@@ -223,7 +282,7 @@ function renderModal(data, elementName) {
         ${productItem.productName}
         </h2>
         <div class="box-detail__price">
-            <span class="box-detail__sale">${productItem.productCost}₫</span>
+            <span class="box-detail__sale">${Number(productItem.productCost).toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
         </div>
         
         <div class="box-detail__btns">
@@ -237,9 +296,9 @@ function renderModal(data, elementName) {
             </div>
             <button class="box-detail__add bg-color">thêm vào giỏ</button>
         </div>
-        <button class="box-detail__detailAll bg-color">xem chi tiết
-            <i class="fa-solid fa-angles-right"></i>
-        </button>
+        <a href="./detail.html?data=${productItem.id}" class="box-detail__detailAll bg-color">xem chi tiết
+        <i class="fa-solid fa-angles-right"></i>
+    </a>
       </div>
       </div>
         `;
@@ -264,13 +323,13 @@ function renderModal(data, elementName) {
         ${productItem.productName}
         </h2>
         <div class="box-detail__price">
-            <span class="box-detail__sale">${productItem.productCost}₫</span>
+            <span class="box-detail__sale">${Number(productItem.productCost).toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
         </div>
         <div class="box-detail__size">
-            <span class="box-detail__sizeName">Kích thước: 20</span>
+            <span class="box-detail__sizeName"></span>
             <ul class="box-detail__listSize ">
                 <li class="box-detail__sizeItem">
-                    <button class="box-detail__sizeBtn bg-color">38</button>
+                    <button class="box-detail__sizeBtn active bg-color">38</button>
                 </li>
                 <li class="box-detail__sizeItem">
                     <button class="box-detail__sizeBtn bg-color">39</button>
@@ -303,9 +362,9 @@ function renderModal(data, elementName) {
             </div>
             <button class="box-detail__add bg-color">thêm vào giỏ</button>
         </div>
-        <button class="box-detail__detailAll bg-color">xem chi tiết
+        <a href="./detail.html?data=${productItem.id}" class="box-detail__detailAll bg-color">xem chi tiết
             <i class="fa-solid fa-angles-right"></i>
-        </button>
+        </a>
       </div>
       </div>
         `;
@@ -330,14 +389,14 @@ function renderModal(data, elementName) {
         ${productItem.productName}
         </h2>
         <div class="box-detail__price">
-            <span class="box-detail__sale"> ${productItem.productSale}₫</span>
-            <span class="box-detail__cost">${productItem.productCost}₫</span>
+            <span class="box-detail__sale"> ${Number(productItem.productSale).toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
+            <span class="box-detail__cost">${Number(productItem.productCost).toLocaleString('vi', {style : 'currency', currency : 'VND'})}</span>
         </div>
         <div class="box-detail__size">
             <span class="box-detail__sizeName">Kích thước: 20</span>
             <ul class="box-detail__listSize ">
                 <li class="box-detail__sizeItem">
-                    <button class="box-detail__sizeBtn bg-color">38</button>
+                    <button class="box-detail__sizeBtn active bg-color">38</button>
                 </li>
                 <li class="box-detail__sizeItem">
                     <button class="box-detail__sizeBtn bg-color">39</button>
@@ -370,9 +429,9 @@ function renderModal(data, elementName) {
             </div>
             <button class="box-detail__add bg-color">thêm vào giỏ</button>
         </div>
-        <button class="box-detail__detailAll bg-color">xem chi tiết
+        <a href="./detail.html?data=${productItem.id}" class="box-detail__detailAll bg-color">xem chi tiết
             <i class="fa-solid fa-angles-right"></i>
-        </button>
+        </a>
       </div>
       </div>
         `;
@@ -387,40 +446,22 @@ function renderModal(data, elementName) {
   bgColors.forEach((element) => {
     element.setAttribute(
       "style",
-      "background-color: rgba(" + codeColor + ",1)!important"
+      "background-color: rgba(" + codeColor + ",1)"
     );
   });
   textColors.forEach((element) => {
-    element.setAttribute("style", "color: rgba(" + codeColor + ",1)!important");
+    element.setAttribute("style", "color: rgba(" + codeColor + ",1)");
   });
 
   bgColorOp.forEach((element) => {
     element.setAttribute(
       "style",
-      "background-color: rgba(" + codeColor + ",0.8)!important"
+      "background-color: rgba(" + codeColor + ",0.8)"
     );
   });
-
   handleEventsModal();
 }
-// product type
-function handleActiveType(type) {
-  let btns = $$(".sneaker__type-item");
-  btns.forEach((element) => {
-    element.classList.remove("sneaker__type-item--active");
-  });
-  switch (type) {
-    case "adidas":
-      btnAdidasType.classList.add("sneaker__type-item--active");
-      break;
-    case "nike":
-      btnNikeType.classList.add("sneaker__type-item--active");
-      break;
-    case "gucci":
-      btnGucciType.classList.add("sneaker__type-item--active");
-      break;
-  }
-}
+
 let handleProductType = (data) => {
   btnNikeType.onclick = () => {
     renderProductType(filterProductType(data, "nike"));
@@ -438,70 +479,329 @@ let handleProductType = (data) => {
 // count product
 let countProduct = (data) => {
   //count product adidas
-  let arrAdidas = filterProductType(data,'adidas')
+  let arrAdidas = filterProductType(data,'adidas',1)
   eleCountProductAdidas.innerHTML = `(${arrAdidas.length})`
   //count product nike
-  let arrNike = filterProductType(data,'nike')
+  let arrNike = filterProductType(data,'nike',1)
   eleCountProductNike.innerHTML = `(${arrNike.length})`
   //count product gucci
-  let arrGucci = filterProductType(data,'gucci')
+  let arrGucci = filterProductType(data,'gucci',1)
   eleCountProductGucci.innerHTML = `(${arrGucci.length})`
   //count product perfume
-  let arrPerfume = filterProductType(data,'perfume')
+  let arrPerfume = filterProductType(data,'perfume',1)
   eleCountProductPerfume.innerHTML = `(${arrPerfume.length})`
   //count product adidas
-  let arrJewelry = filterProductType(data,'jewelry')
+  let arrJewelry = filterProductType(data,'jewelry',1)
   eleCountProductJewelry.innerHTML = `(${arrJewelry.length})`
 }
-// sort product name : 0 ,price : 1 , asc : 0 , desc : 1
+// sort product 
 let handleSort = (data) => {
+  // type = getProductType()
+  let arr
   eleSe.onchange = () => {
    let value = eleSe.value
+   type = getProductType()
+   let isNumber = Number(type)
+   let sortType = isNumber ? 0 : 1
    switch (value) {
      case "n/a":
-       sortProduct(data, "name", "asc");
+      arr = sortProduct(filterProductType(data, type,sortType), "name", "asc");
        break;
      case "n/d":
-       sortProduct(data, "name", "desc");
+      arr = sortProduct(filterProductType(data, type,sortType), "name", "desc");
        break;
      case "p/a":
-       sortProduct(data, "price", "asc");
+      arr = sortProduct(filterProductType(data, type,sortType), "price", "asc");
        break;
      case "p/d":
-       sortProduct(data, "price", "desc");
+      arr = sortProduct(filterProductType(data, type,sortType), "price", "desc");
        break;
    }
+   currentIdType = 0
+   renderProductType(arr)
   }  
 }
 let sortProduct = (data,type,sort) => {
   let result
   if(type === 'name' && sort === 'asc'){
-    result = data.sort()
+    result = data.sort((a, b) => {
+      let fa = a.productName.toLowerCase(),
+        fb = b.productName.toLowerCase();
+      if (fa < fb) {
+        return -1;
+      }
+      if (fa > fb) {
+        return 1;
+      }
+      return 0;
+    });
   }else  if(type === 'name' && sort === 'desc'){
-    result = data.sort().reverse()
+    result = data.sort((a, b) => {
+      let fa = a.productName.toLowerCase(),
+        fb = b.productName.toLowerCase();
+      if (fa < fb) {
+        return -1;
+      }
+      if (fa > fb) {
+        return 1;
+      }
+      return 0;
+    }).reverse()
    }else  if(type === 'price' && sort === 'asc'){
-    result = data.sort().reverse()
+    result = data.sort((a,b) => Number(a.productCost) - Number(b.productCost))
    }else  if(type === 'price' && sort === 'desc'){
-    result = data.sort().reverse()
+    result = data.sort((a,b) => Number(a.productCost) - Number(b.productCost)).reverse()
    }
    return result
 }
-//-------start 
-let startProduct = (data) => {
-  //
-  renderProductType(filterProductType(data, "adidas"));
-  // default btn type
-  handleActiveType("adidas");
-  //
-  handleProductType(data);
+let checkProduct = (name) => {
+  let ele = $('input[filter-data=' + name + ']')
+  ele.setAttribute('checked','checked')
+}
+let handleFilter = (data) => {
+  let filter = $$('input[type="radio"]')
+  let type
+  setLimit()
+ filter.forEach(ele => {
+  ele.onclick = () => {
+    type = ele.getAttribute('filter-data')
+    currentIdType = 0
+    renderProductType(sortProduct(filterProductType(data, type,1),'name','asc'));
+  }
+ })
+}
+// filter price
+let handleFilterPrice = (data) => {
+  let filter = $$('.filter-price')
+  let type
+ filter.forEach(ele => {
+  setLimit()
+  ele.onclick = () => {
+    type = Number(ele.getAttribute('filter-data'))
+    currentIdType = 0
+    let dataRender = sortProduct(filterProductType(data,type,0),'name','asc')
+    renderProductType(dataRender);
+  }
+ })
+}
+//navigation
+const renderPage = (number,data) => {
+  setLimit()
+  typeProduct = getProductType()
+  isNumber = Number(typeProduct)
+  currentIdType = number === 1 ? 0 : (number - 1) *  limitType
+  let value = eleSe.value
   
+  if(isNumber) {
+    switch (value) {
+      case "n/a":
+       arr = sortProduct(filterProductType(data,typeProduct,0), "name", "asc");
+        break;
+      case "n/d":
+       arr = sortProduct(filterProductType(data,typeProduct,0), "name", "desc");
+        break;
+      case "p/a":
+       arr = sortProduct(filterProductType(data,typeProduct,0), "price", "asc");
+        break;
+      case "p/d":
+       arr = sortProduct(filterProductType(data,typeProduct,0), "price", "desc");
+        break;
+    }
+   
+    renderProductType(arr);
+  }else {
+    switch (value) {
+      case "n/a":
+       arr = sortProduct(filterProductType(data,typeProduct,1), "name", "asc");
+        break;
+      case "n/d":
+       arr = sortProduct(filterProductType(data,typeProduct,1), "name", "desc");
+        break;
+      case "p/a":
+       arr = sortProduct(filterProductType(data,typeProduct,1), "price", "asc");
+        break;
+      case "p/d":
+       arr = sortProduct(filterProductType(data,typeProduct,1), "price", "desc");
+        break;
+    }
+    renderProductType(arr);
+  }
+}
+const playNavigation = (data) => {
+  let pages = $$(".pagination__page.pagination__page-number");
+  pages.forEach((page) => {
+    page.onclick = () => {
+      let pageNumber = Number(page.innerText)
+      renderPage(pageNumber,data)
+    };
+  });
+  nextPage(data)
+  prevPage(data)
+};
+const nextPage = (data) => {
+  let nextBtn = $('.pagination__page:last-child .pagination__btn')
+  nextBtn.onclick = () => {
+    let page = Number($('.pagination__btn.active').innerText) + 1
+    renderPage(page,data)
+  }
+}
+const prevPage = (data) => {
+  let prevBtn = $('.pagination__page:first-child .pagination__btn')
+  prevBtn.onclick = () => {
+  let page = Number($('.pagination__btn.active').innerText) - 1
+
+    renderPage(page,data)
+  }
+}
+let navigation = (data, number, ele) => {
+  let numberPage = Math.ceil(data.length / number);
+  let html = "";
+  for (let i = 1; i <= numberPage; i++) {
+    html += ` <li class="pagination__page pagination__page-number">
+    <button class="pagination__btn">${i}</button>
+ </li>`;
+  }
+  let htmls = ` <ul class="pagination__list">
+  <li class="pagination__page">
+    <button class="pagination__btn">
+      prev
+    </button>
+  </li>
+ ${html}
+  <li class="pagination__page">
+    <button class="pagination__btn">next</button>
+  </li>
+</ul>`;
+  ele.innerHTML = htmls;
+};
+
+let handlePageActive = (number,max,totalPage) => {
+  let nextBtn = $('.pagination__page:last-child .pagination__btn')
+  let prevBtn = $('.pagination__page:first-child .pagination__btn')
+  let page = number % max === 0 ? number / max : Math.ceil(number / max)
+  let listItem = $$('.pagination__btn')
+  // console.log(listItem,page)
+  listItem.forEach(ele=> {
+    ele.classList.remove('active')
+  })
+  listItem[page].classList.add('active')
+  page === 1 ? prevBtn.classList.add('disble') : prevBtn.classList.remove('disble')
+  page === totalPage ? nextBtn.classList.add('disble') : nextBtn.classList.remove('disble')
+}
+//function get checked input 
+const getProductType = () => {
+  let result
+  let listInput = $$('input[type=radio]')
+  listInput.forEach(item => {
+    if(item.checked) {
+      result = item.getAttribute('filter-data')
+    }
+  })
+  return result
+}
+const btnSort = () => {
+  let btn = $('.btn__sort')
+  let btnClose = $('.btn__sort-close')
+  btn.onclick = () => {
+    $('.content__left').classList.add('sort__open')
+    $('.content__left').classList.remove('nav__mobile-out')
+  }
+  btnClose.onclick = () => {
+    $('.content__left').classList.remove('sort__open')
+    $('.content__left').classList.add('nav__mobile-out')
+  }
+}
+//-------start 
+let startProduct = (data,typeProduct) => {
+  // responsive limit product
+  setLimit()
+  // navigation(sortProduct(filterProductType(data, typeProduct,1),'name','asc'),limitType,eleNavi)
+  renderProductType(sortProduct(filterProductType(data, typeProduct,1),'name','asc'));
+  // render modal + control model
   handleModal(data);
   //count product
   countProduct(data)
+  //sort product
+  handleSort(data)
+  // set checked
+  checkProduct(typeProduct)
+  //filter type
+  handleFilter(data)
+  //filter price
+  handleFilterPrice(data)
+  //
+  btnSort()
 };
-
-getApi(productApi, startProduct);
-
+// let startProductAdidas = (data) => {
+//   //
+//   navigation(sortProduct(filterProductType(data, "adidas",1),'name','asc'),8,eleNavi)
+//   renderProductType(sortProduct(filterProductType(data, "adidas",1),'name','asc'));
+  
+//   // default btn type
+//   handleActiveType("adidas");
+//   //
+//   handleProductType(data);
+//   // render modal + control model
+//   handleModal(data);
+//   //count product
+//   countProduct(data)
+//   //sort product
+//   handleSort(data,'adidas')
+//   // set checked
+//   checkProduct('adidas')
+//   //filter type
+//   handleFilter(data)
+//   //filter price
+//   handleFilterPrice(data)
+//   //
+//   playNavigation(data);
+ 
+ 
+// };
+// let startProductNike = (data) => {
+//   //
+//   renderProductType(sortProduct(filterProductType(data, "nike"),'name','asc'));
+//   // default btn type
+//   handleActiveType("adidas");
+//   //
+//   handleProductType(data);
+  
+//   handleModal(data);
+//   //count product
+//   countProduct(data)
+//   //sort
+//   handleSort(data,'nike')
+//   //
+//   checkProduct('nike')
+// };
+// let startProductGucci = (data) => {
+//   //
+//   renderProductType(sortProduct(filterProductType(data, "gucci"),'name','asc'));
+//   // default btn type
+//   handleActiveType("adidas");
+//   //
+//   handleProductType(data);
+  
+//   handleModal(data);
+//   //count product
+//   countProduct(data)
+//   //sort
+//   handleSort(data,'gucci')
+//   //
+//   checkProduct('gucci')
+// };
+let urlPage = window.location.href
+if(urlPage.includes('?adidas')) {
+  getApi(productApi, (data) => { startProduct(data,'adidas')});
+}else if(urlPage.includes('?nike')) {
+  getApi(productApi,  (data) => { startProduct(data,'nike')});
+}else if(urlPage.includes('?gucci')) {
+  getApi(productApi,  (data) => { startProduct(data,'gucci')});
+}else if(urlPage.includes('?perfume')) {
+  getApi(productApi,  (data) => { startProduct(data,'perfume')});
+}else if(urlPage.includes('?jewelry')) {
+  getApi(productApi,  (data) => { startProduct(data,'jewelry')});
+}
 //----------banner
 
 // function btn hover
@@ -568,6 +868,9 @@ const starBanner = (data) => {
     nextBanner(data);
   }, 10000);
 };
+
+////
+handleLoading()
 //------------
 getApi(bannerApi, starBanner);
 ///
